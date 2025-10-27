@@ -1,0 +1,6 @@
+    lex.py: 924:lex: tokens   = ('SC', 'DC', 'HDC', 'TR', 'DTR', 'CH', 'STITCH', 'SLIP_STITCH', 'NEXT', 'LAST', 'FIRST', 'SAME', 'JOIN', 'TURN', 'REPEAT', 'POPCORN', 'BOBBLE', 'CLUSTER')
+    lex.py: 925:lex: literals = ''
+    lex.py: 926:lex: states   = {'INITIAL': 'inclusive'}
+    lex.py: 959:lex: Adding rule t_SC -> 'sc|single crochet|SC' (state 'INITIAL')
+    lex.py: 966:lex: ==== MASTER REGEXS FOLLOW ====
+    lex.py: 975:lex: state 'INITIAL' : regex[0] = '(?P<t_SC>sc|single crochet|SC)'

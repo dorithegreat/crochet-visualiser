@@ -1,0 +1,83 @@
+all             -> declarations rounds
+
+declarations    -> declarations declaration
+                |  declaration
+                | 
+
+rounds          -> rounds round
+                | round
+
+round           -> expressions
+
+expressions     -> expressions, expression
+                | expression
+                | expression (counts as alias)
+                | expression to make alias
+
+expression      -> stitch_type
+                | loop
+                | number stitch_type
+                | number stitch_type destination
+                | stitch_type destination
+                | picot ?
+                | join
+                | turn
+
+alias           -> RING
+                | simple_stitch
+                | FIRST simple_stitch
+
+stitch_type     -> simple_stitch
+                | grouped_stitch
+
+simple_stitch   -> single_crochet
+                | double_crochet
+                | slip_stitch
+                | treble_stitch
+                | double_treble
+                | half_double_crochet
+                | modifier stitch
+                | generic_stitch
+                | chain
+
+grouped_stitch  -> number stich increase
+                | number stitch decrease
+                | number stitch popcorn
+                | number stitch bobble
+                | number stitch cluster
+
+modifier        -> FP
+                | BP
+                | BLO
+                | BL
+                | FLO
+                | FL
+
+destination     -> next stitch
+                | last stitch
+                | first stitch
+                | same stitch
+                | ORDINAL chain FROM_HOOK
+
+
+single_crochet  -> single crochet
+                | sc
+
+double_crochet  -> double crochet
+                | dc
+
+slip_stitch     -> slip stitch
+                | slip
+                | sl st
+                
+generic_stitch  -> stitch
+                | st
+
+chain           -> number chain
+                | chain number
+                | number ch
+                | ch number
+
+loop            -> * expressions repeat from * number times
+                | * expressions repeat from * around
+
