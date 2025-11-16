@@ -1,12 +1,18 @@
 from enum import Enum
 
-
+class Alias:
+    def __init__(self, alias):
+        self.alias = alias
 class All:
     def __init__(self, declarations, rounds):
         self.declarations : Declarations = declarations
         self.rounds : Rounds = rounds
-    
-    
+
+class CountsAs:
+    def __init__(self, stitch, alias):
+        self.stitch = stitch
+        self.alias = alias
+
 class Declaration:
     def __init__(self):
         pass
@@ -21,10 +27,11 @@ class Decrease:
         self.number : int = number
 
 class Destination:
-    def __init__(self, type, stitch):
-        self.type = type
+    def __init__(self, stitch):
         self.stitch = stitch
-        
+    
+    def set_type(self, type):
+        self.type = type
 class Destination_Ordinal:
     def __init__(self, number : int):
         self.number : int =  number

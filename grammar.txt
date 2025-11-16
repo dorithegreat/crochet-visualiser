@@ -11,10 +11,10 @@ round           -> expressions
 
 expressions     -> expressions, expression
                 | expression
-                | expression (counts as alias)
-                | expression to make alias
 
 expression      -> stitch_type
+                | stitch_type (counts as alias)
+                | stitch_type to make alias
                 | loop
                 | number stitch_type
                 | number stitch_type destination
@@ -22,6 +22,7 @@ expression      -> stitch_type
                 | picot ?
                 | join
                 | turn
+                | ring
 
 alias           -> RING
                 | simple_stitch
