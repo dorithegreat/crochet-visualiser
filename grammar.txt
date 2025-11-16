@@ -29,6 +29,8 @@ alias           -> RING
 
 stitch_type     -> simple_stitch
                 | grouped_stitch
+                |modifier simple_stitch
+                | generic_stitch
 
 simple_stitch   -> single_crochet
                 | double_crochet
@@ -36,8 +38,6 @@ simple_stitch   -> single_crochet
                 | treble_stitch
                 | double_treble
                 | half_double_crochet
-                | modifier stitch
-                | generic_stitch
                 | chain
 
 grouped_stitch  -> number stich increase
