@@ -167,13 +167,19 @@ def t_ORDINAL(t):
     t.value = int(t.value[:-2])
     return t
 
+# comments that start with // and end with a newline or another //
+def t_COMMENT(t):
+    r'//([^/\n]|/(?!/))*?(//|\n)'
+    pass 
+
+
 def t_error(t):
     t.lexer.skip(1)
 
 
 
 # ! -- Parser --
-literals = "*()"
+literals = "*()[]"
 
 def p_all(p):
     'all : declarations rounds'
@@ -383,6 +389,14 @@ def p_loop_number(p):
 
 def p_loop_around(p):
     '''loop : '*' expressions REPEAT '*' AROUND '''
+    p[0] = nd.Loop(p[2], None)
+
+def p_loop_number_brackets(p):
+    ''' loop :  '[' expressions ']' NUMBER TIMES '''
+    p[0] = nd.Loop(p[2], p[4])
+
+def p_loop_around_brackets(p):
+    ''' loop : '[' expressions ']' AROUND '''
     p[0] = nd.Loop(p[2], None)
 
 def p_empty(p):

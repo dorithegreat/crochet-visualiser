@@ -43,9 +43,6 @@ class Expressions:
     def add_expression(self, expression):
         self.expressions.append(expression)
     
-class Expression:
-    def __init__(self):
-        pass
 
 class Increase:
     def __init__(self, stitch, number):
