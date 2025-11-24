@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="800" height="300" viewBox="-400.0 -150.0 800 300">
+<defs>
+<g id="d0">
+<ellipse cx="0" cy="0" rx="6" ry="3" stroke="black" fill="none" stroke-width="1.0" />
+</g>
+</defs>
+<use xlink:href="#d0" x="0" y="0" transform="translate(0.0,0.0) rotate(85.53227619948402)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(0.9756743015017755,11.067988907288932) rotate(84.32629841083613)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(2.232931261029521,22.107291822966957) rotate(82.54277976531051)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(3.946037564606885,33.08410207840442) rotate(79.32484840464569)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(6.718130522211654,43.82964514290793) rotate(68.87447350768313)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(13.28186947778837,43.82964514290788) rotate(-68.87447350768328)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(16.053962435393107,33.08410207840446) rotate(-79.32484840464569)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(17.767068738970472,22.107291822967024) rotate(-82.5427797653105)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(19.024325698498224,11.067988907288981) rotate(-84.32629841083612)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(20.0,0.0) rotate(-85.53227619948402)" />
+<circle cx="0.0" cy="0.0" r="3" fill="red" />
+<circle cx="20.0" cy="0.0" r="3" fill="red" />
+<path d="M0.0,0.0 L5.0,63.99187725037336 L15.0,63.99187725037336 L20.0,0.0" stroke="gray" fill="none" stroke-width="1" />
+</svg>

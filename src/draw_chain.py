@@ -1,0 +1,142 @@
+# arch_ellipses.py
+import math
+import drawsvg as draw
+
+# ---------- Internal utility functions ----------
+def bezier_point(P0, P1, P2, P3, t):
+    u = 1 - t
+    b0 = u**3
+    b1 = 3*u**2*t
+    b2 = 3*u*t**2
+    b3 = t**3
+    x = b0*P0[0] + b1*P1[0] + b2*P2[0] + b3*P3[0]
+    y = b0*P0[1] + b1*P1[1] + b2*P2[1] + b3*P3[1]
+    return x, y
+
+def bezier_derivative(P0, P1, P2, P3, t):
+    u = 1 - t
+    dx = 3*((P1[0]-P0[0])*u*u + 2*(P2[0]-P1[0])*u*t + (P3[0]-P2[0])*t*t)
+    dy = 3*((P1[1]-P0[1])*u*u + 2*(P2[1]-P1[1])*u*t + (P3[1]-P2[1])*t*t)
+    return dx, dy
+
+def bezier_length(P0, P1, P2, P3, n_intervals=1000):
+    if n_intervals % 2 == 1: n_intervals += 1
+    h = 1.0 / n_intervals
+    s = 0.0
+    def speed(t):
+        dx, dy = bezier_derivative(P0, P1, P2, P3, t)
+        return math.hypot(dx, dy)
+    s += speed(0) + speed(1)
+    for i in range(1, n_intervals):
+        coef = 4 if i % 2 == 1 else 2
+        s += coef * speed(i*h)
+    return s * (h/3.0)
+
+def find_h_for_length(P0, P3, desired_length, h_min=0.0, h_max=1000.0, tol=1e-6, max_iter=60, simpson_intervals=1000):
+    x0, y0 = P0
+    x3, y3 = P3
+    c = math.hypot(x3 - x0, y3 - y0)
+    if desired_length < c - 1e-12:
+        raise ValueError("Desired length smaller than chord distance between endpoints.")
+    def length_for_h(h):
+        dx = x3 - x0
+        dy = y3 - y0
+        angle = math.atan2(dy, dx)
+        cosA = math.cos(-angle)
+        sinA = math.sin(-angle)
+        def to_local(px, py):
+            tx = px - x0
+            ty = py - y0
+            return tx*cosA - ty*sinA, tx*sinA + ty*cosA
+        P0_local = (0.0, 0.0)
+        P3_local = (c, 0.0)
+        P1_local = (0.25*c, h)
+        P2_local = (0.75*c, h)
+        return bezier_length(P0_local, P1_local, P2_local, P3_local, n_intervals=simpson_intervals)
+    lo = h_min
+    hi = h_max
+    for _ in range(max_iter):
+        mid = 0.5*(lo+hi)
+        Lmid = length_for_h(mid)
+        if abs(Lmid - desired_length) <= tol:
+            return mid
+        if Lmid < desired_length:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5*(lo+hi)
+
+def sample_bezier_by_arclength(P0, P1, P2, P3, n_samples=100, sample_grid=5000):
+    M = sample_grid
+    ts = [i / M for i in range(M + 1)]
+    pts = [bezier_point(P0, P1, P2, P3, t) for t in ts]
+    ders = [bezier_derivative(P0, P1, P2, P3, t) for t in ts]
+    speeds = [math.hypot(dx, dy) for dx, dy in ders]
+    cum = [0.0]
+    for i in range(1, M+1):
+        seg = 0.5*(speeds[i-1]+speeds[i])*(1.0/M)
+        cum.append(cum[-1]+seg)
+    total = cum[-1]
+    samples = []
+    for k in range(n_samples):
+        s_target = (k/(n_samples-1))*total if n_samples>1 else 0.0
+        lo_idx = 0
+        hi_idx = M
+        while lo_idx<hi_idx:
+            mid = (lo_idx+hi_idx)//2
+            if cum[mid]<s_target:
+                lo_idx=mid+1
+            else:
+                hi_idx=mid
+        idx = max(1, lo_idx)
+        s0, s1 = cum[idx-1], cum[idx]
+        t0, t1 = ts[idx-1], ts[idx]
+        if s1 - s0 == 0:
+            t_est = t0
+        else:
+            t_est = t0 + (s_target - s0)*(t1 - t0)/(s1 - s0)
+        x, y = bezier_point(P0, P1, P2, P3, t_est)
+        dx, dy = bezier_derivative(P0, P1, P2, P3, t_est)
+        samples.append((t_est, (x,y), (dx,dy)))
+    return samples
+
+# ---------- Public function ----------
+def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30):
+    """
+    Places 'n_ellipses' along an arch between points P0 and P3 in the given drawsvg Drawing.
+    
+    Parameters:
+    - drawing: drawsvg.Drawing instance
+    - P0, P3: tuple (x, y) start and end points
+    - desired_length: approximate curve length
+    - n_ellipses: number of ellipses along the curve
+    """
+    h = find_h_for_length(P0, P3, desired_length)
+    x0, y0 = P0
+    x3, y3 = P3
+    dx = x3 - x0
+    dy = y3 - y0
+    angle = math.atan2(dy, dx)
+    c = math.hypot(dx, dy)
+    cosA = math.cos(angle)
+    sinA = math.sin(angle)
+    def to_world(lx, ly):
+        wx = lx*cosA - ly*sinA + x0
+        wy = lx*sinA + ly*cosA + y0
+        return wx, wy
+    P0_local = (0.0, 0.0)
+    P1_local = (0.25*c, h)
+    P2_local = (0.75*c, h)
+    P3_local = (c, 0.0)
+    # sample points along arc-length
+    samples = sample_bezier_by_arclength(P0_local, P1_local, P2_local, P3_local, n_samples=n_ellipses)
+    # ellipse shape
+    shape = draw.Group()
+    shape.append(draw.Ellipse(0, 0, 6, 3, stroke='black', fill='none', stroke_width=1))
+    for t_local, (lx,ly), (dx_local,dy_local) in samples:
+        wx, wy = to_world(lx, ly)
+        dxw = dx_local * cosA - dy_local * sinA
+        dyw = dx_local * sinA + dy_local * cosA
+        ang = math.degrees(math.atan2(dyw, dxw))
+        drawing.append(draw.Use(shape, 0, 0, transform=f"translate({wx},{wy}) rotate({ang})"))
+    return h  # optional return of control height for reference

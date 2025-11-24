@@ -1,6 +1,7 @@
 import ply.yacc as yacc
 import ply.lex as lex
 
+from preprocessor import Preprocessor
 import nodes as nd
 
 tokens = (
@@ -9,7 +10,7 @@ tokens = (
     'SLIP_STITCH',
     'NEXT', 'LAST', 'FIRST', 'SAME',
     'JOIN', 'TURN',
-    'REPEAT', 'TIMES', 'AROUND',
+    'REPEAT', 'TIMES', 'AROUND', 'TWICE',
     'POPCORN', 'BOBBLE', 'CLUSTER',
     'COMMA', 'COLON', #explicitly defined because I keep not noticing it if I use a literal for it
     'TO_MAKE', 'COUNTS_AS',
@@ -18,7 +19,7 @@ tokens = (
     'INCREASE', 'DECREASE',
     'NUMBER', 'ORDINAL',
     'INTO',
-    'ROUND'
+    'ROUND', 'SKIP'
 )
 
 #? All tokens are defined as functions due to PLY not correctly handling multi-word tokens otherwise
@@ -98,6 +99,10 @@ def t_AROUND(t):
     r'around'
     return t
 
+def t_TWICE(t):
+    r'twice'
+    return t
+
 
 def t_POPCORN(t):
     r'popcorn'
@@ -139,6 +144,10 @@ def t_INCREASE(t):
 
 def t_DECREASE(t):
     r'(?:decrease|split)'
+    return t
+
+def t_SKIP(t):
+    r'skip'
     return t
 
 def t_INTO(t):
@@ -255,20 +264,20 @@ def p_expression_chain_number(p):
 
 def p_expression_number_stitch(p):
     'expression : NUMBER stitch_type'
-    stitch = nd.StitchGroup(p[2])
+    stitch = p[2]
     stitch.set_number(p[1])
     p[0] = stitch
 
 def p_expression_number_stitch_destination(p):
     'expression : NUMBER stitch_type INTO destination'
-    stitch = nd.StitchGroup(p[2])
+    stitch = p[2]
     stitch.set_number(p[1])
     stitch.set_destination(p[4])
     p[0] = stitch
 
 def p_expression_stitch_destination(p):
     'expression : stitch_type INTO destination'
-    stitch = nd.StitchGroup(p[1])
+    stitch = p[1]
     stitch.set_destination(p[3])
     p[0] = stitch
     
@@ -279,7 +288,14 @@ def p_expression_loop(p):
 def p_expression_ring(p):
     'expression : RING'
     p[0] = p[1]
+    
+def p_expression_skip_one(p):
+    'expression : SKIP stitch_type'
+    p[0] = nd.Skip(p[2], 1)
 
+def p_expression_skip_multiple(p):
+    'expression : SKIP NUMBER stitch_type'
+    p[0] = nd.Skip(p[3], p[2])
 
 #! --- Aliases ---
 
@@ -384,7 +400,7 @@ def p_destination_ring(p):
     p[0] = nd.Destination(p[1])
 
 def p_loop_number(p):
-    '''loop : '*' expressions REPEAT '*' NUMBER TIMES '''
+    '''loop : '*' expressions REPEAT '*' number_times '''
     p[0] = nd.Loop(p[2], p[5])
 
 def p_loop_around(p):
@@ -392,12 +408,20 @@ def p_loop_around(p):
     p[0] = nd.Loop(p[2], None)
 
 def p_loop_number_brackets(p):
-    ''' loop :  '[' expressions ']' NUMBER TIMES '''
+    ''' loop :  '[' expressions ']' number_times '''
     p[0] = nd.Loop(p[2], p[4])
 
 def p_loop_around_brackets(p):
     ''' loop : '[' expressions ']' AROUND '''
     p[0] = nd.Loop(p[2], None)
+
+def p_number_times(p):
+    'number_times : NUMBER TIMES'
+    p[0] = p[1]
+
+def p_number_times(p):
+    'number_times : TWICE'
+    p[0] = 2
 
 def p_empty(p):
     'empty :'
@@ -425,4 +449,7 @@ if __name__ == "__main__":
 
 
 tree = parser.parse(text, debug=log)
-print(tree)
+# print(tree)
+
+preprocessor = Preprocessor()
+preprocessor.preprocess(tree)

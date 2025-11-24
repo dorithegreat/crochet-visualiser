@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "AROUND BOBBLE CHAIN CLUSTER COLON COMMA COUNTS_AS DC DECREASE DTR FIRST FROM_HOOK HDC INCREASE INTO JOIN LAST NEXT NUMBER ORDINAL POPCORN REPEAT RING ROUND SAME SC SLIP_STITCH STITCH TIMES TO_MAKE TR TURNall : declarations roundsdeclarations : declarations declarationdeclarations : declarationdeclaration : emptyrounds : rounds roundrounds : roundround : ROUND NUMBER COLON expressionsexpressions : expressions COMMA aliasable_expressionexpressions : aliasable_expressionaliasable_expression : expression '(' COUNTS_AS alias ')' aliasable_expression : expression TO_MAKE aliasaliasable_expression : expressionexpression : stitch_typeexpression : CHAIN NUMBERexpression : NUMBER stitch_typeexpression : NUMBER stitch_type INTO destinationexpression : stitch_type INTO destinationexpression : loopexpression : RINGalias : RINGalias : simple_stitchalias : FIRST simple_stitchstitch_type : simple_stitchstitch_type : grouped_stitchsimple_stitch : SCsimple_stitch : DCsimple_stitch : TRsimple_stitch : DTRsimple_stitch : HDCsimple_stitch : SLIP_STITCHsimple_stitch : CHAINsimple_stitch : STITCHgrouped_stitch : NUMBER simple_stitch INCREASEgrouped_stitch : NUMBER simple_stitch DECREASEgrouped_stitch : NUMBER simple_stitch POPCORNdestination : NEXT stitch_typedestination : LAST stitch_typedestination : FIRST stitch_typedestination : ORDINAL CHAIN FROM_HOOKdestination : RINGloop : '*' expressions REPEAT '*' NUMBER TIMES loop : '*' expressions REPEAT '*' AROUND  loop :  '[' expressions ']' NUMBER TIMES  loop : '[' expressions ']' AROUND empty :"
+_lr_signature = "AROUND BOBBLE CHAIN CLUSTER COLON COMMA COUNTS_AS DC DECREASE DTR FIRST FROM_HOOK HDC INCREASE INTO JOIN LAST NEXT NUMBER ORDINAL POPCORN REPEAT RING ROUND SAME SC SKIP SLIP_STITCH STITCH TIMES TO_MAKE TR TURNall : declarations roundsdeclarations : declarations declarationdeclarations : declarationdeclaration : emptyrounds : rounds roundrounds : roundround : ROUND NUMBER COLON expressionsexpressions : expressions COMMA aliasable_expressionexpressions : aliasable_expressionaliasable_expression : expression '(' COUNTS_AS alias ')' aliasable_expression : expression TO_MAKE aliasaliasable_expression : expressionexpression : stitch_typeexpression : CHAIN NUMBERexpression : NUMBER stitch_typeexpression : NUMBER stitch_type INTO destinationexpression : stitch_type INTO destinationexpression : loopexpression : RINGexpression : SKIP stitch_typeexpression : SKIP NUMBER stitch_typealias : RINGalias : simple_stitchalias : FIRST simple_stitchstitch_type : simple_stitchstitch_type : grouped_stitchsimple_stitch : SCsimple_stitch : DCsimple_stitch : TRsimple_stitch : DTRsimple_stitch : HDCsimple_stitch : SLIP_STITCHsimple_stitch : CHAINsimple_stitch : STITCHgrouped_stitch : NUMBER simple_stitch INCREASEgrouped_stitch : NUMBER simple_stitch DECREASEgrouped_stitch : NUMBER simple_stitch POPCORNdestination : NEXT stitch_typedestination : LAST stitch_typedestination : FIRST stitch_typedestination : ORDINAL CHAIN FROM_HOOKdestination : RINGloop : '*' expressions REPEAT '*' NUMBER TIMES loop : '*' expressions REPEAT '*' AROUND  loop :  '[' expressions ']' NUMBER TIMES  loop : '[' expressions ']' AROUND empty :"
     
-_lr_action_items = {'ROUND':([0,2,3,4,5,6,7,9,13,14,15,16,17,18,19,20,21,24,25,26,27,28,29,30,32,33,34,39,44,45,46,47,49,50,51,53,58,61,63,64,65,66,70,71,72,74,75,76,],[-45,8,-3,-4,8,-2,-6,-5,-7,-9,-12,-13,-31,-18,-19,-23,-24,-25,-26,-27,-28,-29,-30,-32,-15,-23,-31,-14,-33,-34,-35,-8,-11,-20,-21,-17,-40,-16,-22,-36,-37,-38,-44,-10,-39,-42,-43,-41,]),'$end':([1,5,7,9,13,14,15,16,17,18,19,20,21,24,25,26,27,28,29,30,32,33,34,39,44,45,46,47,49,50,51,53,58,61,63,64,65,66,70,71,72,74,75,76,],[0,-1,-6,-5,-7,-9,-12,-13,-31,-18,-19,-23,-24,-25,-26,-27,-28,-29,-30,-32,-15,-23,-31,-14,-33,-34,-35,-8,-11,-20,-21,-17,-40,-16,-22,-36,-37,-38,-44,-10,-39,-42,-43,-41,]),'NUMBER':([8,11,12,17,22,23,35,54,55,56,60,68,],[10,12,31,39,12,12,12,31,31,31,69,73,]),'COLON':([10,],[11,]),'CHAIN':([11,12,22,23,31,35,37,48,52,54,55,56,57,],[17,34,17,17,34,17,34,34,34,34,34,34,67,]),'RING':([11,22,23,35,37,38,43,48,],[19,19,19,19,50,58,58,50,]),'*':([11,22,23,35,59,],[22,22,22,22,68,]),'[':([11,22,23,35,],[23,23,23,23,]),'SC':([11,12,22,23,31,35,37,48,52,54,55,56,],[24,24,24,24,24,24,24,24,24,24,24,24,]),'DC':([11,12,22,23,31,35,37,48,52,54,55,56,],[25,25,25,25,25,25,25,25,25,25,25,25,]),'TR':([11,12,22,23,31,35,37,48,52,54,55,56,],[26,26,26,26,26,26,26,26,26,26,26,26,]),'DTR':([11,12,22,23,31,35,37,48,52,54,55,56,],[27,27,27,27,27,27,27,27,27,27,27,27,]),'HDC':([11,12,22,23,31,35,37,48,52,54,55,56,],[28,28,28,28,28,28,28,28,28,28,28,28,]),'SLIP_STITCH':([11,12,22,23,31,35,37,48,52,54,55,56,],[29,29,29,29,29,29,29,29,29,29,29,29,]),'STITCH':([11,12,22,23,31,35,37,48,52,54,55,56,],[30,30,30,30,30,30,30,30,30,30,30,30,]),'COMMA':([13,14,15,16,17,18,19,20,21,24,25,26,27,28,29,30,32,33,34,39,40,41,44,45,46,47,49,50,51,53,58,61,63,64,65,66,70,71,72,74,75,76,],[35,-9,-12,-13,-31,-18,-19,-23,-24,-25,-26,-27,-28,-29,-30,-32,-15,-23,-31,-14,35,35,-33,-34,-35,-8,-11,-20,-21,-17,-40,-16,-22,-36,-37,-38,-44,-10,-39,-42,-43,-41,]),'REPEAT':([14,15,16,17,18,19,20,21,24,25,26,27,28,29,30,32,33,34,39,40,44,45,46,47,49,50,51,53,58,61,63,64,65,66,70,71,72,74,75,76,],[-9,-12,-13,-31,-18,-19,-23,-24,-25,-26,-27,-28,-29,-30,-32,-15,-23,-31,-14,59,-33,-34,-35,-8,-11,-20,-21,-17,-40,-16,-22,-36,-37,-38,-44,-10,-39,-42,-43,-41,]),']':([14,15,16,17,18,19,20,21,24,25,26,27,28,29,30,32,33,34,39,41,44,45,46,47,49,50,51,53,58,61,63,64,65,66,70,71,72,74,75,76,],[-9,-12,-13,-31,-18,-19,-23,-24,-25,-26,-27,-28,-29,-30,-32,-15,-23,-31,-14,60,-33,-34,-35,-8,-11,-20,-21,-17,-40,-16,-22,-36,-37,-38,-44,-10,-39,-42,-43,-41,]),'(':([15,16,17,18,19,20,21,24,25,26,27,28,29,30,32,33,34,39,44,45,46,53,58,61,64,65,66,70,72,74,75,76,],[36,-13,-31,-18,-19,-23,-24,-25,-26,-27,-28,-29,-30,-32,-15,-23,-31,-14,-33,-34,-35,-17,-40,-16,-36,-37,-38,-44,-39,-42,-43,-41,]),'TO_MAKE':([15,16,17,18,19,20,21,24,25,26,27,28,29,30,32,33,34,39,44,45,46,53,58,61,64,65,66,70,72,74,75,76,],[37,-13,-31,-18,-19,-23,-24,-25,-26,-27,-28,-29,-30,-32,-15,-23,-31,-14,-33,-34,-35,-17,-40,-16,-36,-37,-38,-44,-39,-42,-43,-41,]),'INTO':([16,17,20,21,24,25,26,27,28,29,30,32,33,34,44,45,46,],[38,-31,-23,-24,-25,-26,-27,-28,-29,-30,-32,43,-23,-31,-33,-34,-35,]),'INCREASE':([24,25,26,27,28,29,30,33,34,42,],[-25,-26,-27,-28,-29,-30,-32,44,-31,44,]),'DECREASE':([24,25,26,27,28,29,30,33,34,42,],[-25,-26,-27,-28,-29,-30,-32,45,-31,45,]),'POPCORN':([24,25,26,27,28,29,30,33,34,42,],[-25,-26,-27,-28,-29,-30,-32,46,-31,46,]),')':([24,25,26,27,28,29,30,34,50,51,62,63,],[-25,-26,-27,-28,-29,-30,-32,-31,-20,-21,71,-22,]),'COUNTS_AS':([36,],[48,]),'FIRST':([37,38,43,48,],[52,56,56,52,]),'NEXT':([38,43,],[54,54,]),'LAST':([38,43,],[55,55,]),'ORDINAL':([38,43,],[57,57,]),'AROUND':([60,68,],[70,74,]),'FROM_HOOK':([67,],[72,]),'TIMES':([69,73,],[75,76,]),}
+_lr_action_items = {'ROUND':([0,2,3,4,5,6,7,9,13,14,15,16,17,18,19,21,22,25,26,27,28,29,30,31,33,34,35,40,41,47,48,49,50,52,53,54,56,61,62,65,67,68,69,70,74,75,76,78,79,80,],[-47,8,-3,-4,8,-2,-6,-5,-7,-9,-12,-13,-33,-18,-19,-25,-26,-27,-28,-29,-30,-31,-32,-34,-15,-25,-33,-14,-20,-35,-36,-37,-8,-11,-22,-23,-17,-42,-21,-16,-24,-38,-39,-40,-46,-10,-41,-44,-45,-43,]),'$end':([1,5,7,9,13,14,15,16,17,18,19,21,22,25,26,27,28,29,30,31,33,34,35,40,41,47,48,49,50,52,53,54,56,61,62,65,67,68,69,70,74,75,76,78,79,80,],[0,-1,-6,-5,-7,-9,-12,-13,-33,-18,-19,-25,-26,-27,-28,-29,-30,-31,-32,-34,-15,-25,-33,-14,-20,-35,-36,-37,-8,-11,-22,-23,-17,-42,-21,-16,-24,-38,-39,-40,-46,-10,-41,-44,-45,-43,]),'NUMBER':([8,11,12,17,20,23,24,36,42,57,58,59,64,72,],[10,12,32,40,42,12,12,12,32,32,32,32,73,77,]),'COLON':([10,],[11,]),'CHAIN':([11,12,20,23,24,32,36,38,42,51,55,57,58,59,60,],[17,35,35,17,17,35,17,35,35,35,35,35,35,35,71,]),'RING':([11,23,24,36,38,39,46,51,],[19,19,19,19,53,61,61,53,]),'SKIP':([11,23,24,36,],[20,20,20,20,]),'*':([11,23,24,36,63,],[23,23,23,23,72,]),'[':([11,23,24,36,],[24,24,24,24,]),'SC':([11,12,20,23,24,32,36,38,42,51,55,57,58,59,],[25,25,25,25,25,25,25,25,25,25,25,25,25,25,]),'DC':([11,12,20,23,24,32,36,38,42,51,55,57,58,59,],[26,26,26,26,26,26,26,26,26,26,26,26,26,26,]),'TR':([11,12,20,23,24,32,36,38,42,51,55,57,58,59,],[27,27,27,27,27,27,27,27,27,27,27,27,27,27,]),'DTR':([11,12,20,23,24,32,36,38,42,51,55,57,58,59,],[28,28,28,28,28,28,28,28,28,28,28,28,28,28,]),'HDC':([11,12,20,23,24,32,36,38,42,51,55,57,58,59,],[29,29,29,29,29,29,29,29,29,29,29,29,29,29,]),'SLIP_STITCH':([11,12,20,23,24,32,36,38,42,51,55,57,58,59,],[30,30,30,30,30,30,30,30,30,30,30,30,30,30,]),'STITCH':([11,12,20,23,24,32,36,38,42,51,55,57,58,59,],[31,31,31,31,31,31,31,31,31,31,31,31,31,31,]),'COMMA':([13,14,15,16,17,18,19,21,22,25,26,27,28,29,30,31,33,34,35,40,41,43,44,47,48,49,50,52,53,54,56,61,62,65,67,68,69,70,74,75,76,78,79,80,],[36,-9,-12,-13,-33,-18,-19,-25,-26,-27,-28,-29,-30,-31,-32,-34,-15,-25,-33,-14,-20,36,36,-35,-36,-37,-8,-11,-22,-23,-17,-42,-21,-16,-24,-38,-39,-40,-46,-10,-41,-44,-45,-43,]),'REPEAT':([14,15,16,17,18,19,21,22,25,26,27,28,29,30,31,33,34,35,40,41,43,47,48,49,50,52,53,54,56,61,62,65,67,68,69,70,74,75,76,78,79,80,],[-9,-12,-13,-33,-18,-19,-25,-26,-27,-28,-29,-30,-31,-32,-34,-15,-25,-33,-14,-20,63,-35,-36,-37,-8,-11,-22,-23,-17,-42,-21,-16,-24,-38,-39,-40,-46,-10,-41,-44,-45,-43,]),']':([14,15,16,17,18,19,21,22,25,26,27,28,29,30,31,33,34,35,40,41,44,47,48,49,50,52,53,54,56,61,62,65,67,68,69,70,74,75,76,78,79,80,],[-9,-12,-13,-33,-18,-19,-25,-26,-27,-28,-29,-30,-31,-32,-34,-15,-25,-33,-14,-20,64,-35,-36,-37,-8,-11,-22,-23,-17,-42,-21,-16,-24,-38,-39,-40,-46,-10,-41,-44,-45,-43,]),'(':([15,16,17,18,19,21,22,25,26,27,28,29,30,31,33,34,35,40,41,47,48,49,56,61,62,65,68,69,70,74,76,78,79,80,],[37,-13,-33,-18,-19,-25,-26,-27,-28,-29,-30,-31,-32,-34,-15,-25,-33,-14,-20,-35,-36,-37,-17,-42,-21,-16,-38,-39,-40,-46,-41,-44,-45,-43,]),'TO_MAKE':([15,16,17,18,19,21,22,25,26,27,28,29,30,31,33,34,35,40,41,47,48,49,56,61,62,65,68,69,70,74,76,78,79,80,],[38,-13,-33,-18,-19,-25,-26,-27,-28,-29,-30,-31,-32,-34,-15,-25,-33,-14,-20,-35,-36,-37,-17,-42,-21,-16,-38,-39,-40,-46,-41,-44,-45,-43,]),'INTO':([16,17,21,22,25,26,27,28,29,30,31,33,34,35,47,48,49,],[39,-33,-25,-26,-27,-28,-29,-30,-31,-32,-34,46,-25,-33,-35,-36,-37,]),'INCREASE':([25,26,27,28,29,30,31,34,35,45,],[-27,-28,-29,-30,-31,-32,-34,47,-33,47,]),'DECREASE':([25,26,27,28,29,30,31,34,35,45,],[-27,-28,-29,-30,-31,-32,-34,48,-33,48,]),'POPCORN':([25,26,27,28,29,30,31,34,35,45,],[-27,-28,-29,-30,-31,-32,-34,49,-33,49,]),')':([25,26,27,28,29,30,31,35,53,54,66,67,],[-27,-28,-29,-30,-31,-32,-34,-33,-22,-23,75,-24,]),'COUNTS_AS':([37,],[51,]),'FIRST':([38,39,46,51,],[55,59,59,55,]),'NEXT':([39,46,],[57,57,]),'LAST':([39,46,],[58,58,]),'ORDINAL':([39,46,],[60,60,]),'AROUND':([64,72,],[74,78,]),'FROM_HOOK':([71,],[76,]),'TIMES':([73,77,],[79,80,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'all':([0,],[1,]),'declarations':([0,],[2,]),'declaration':([0,2,],[3,6,]),'empty':([0,2,],[4,4,]),'rounds':([2,],[5,]),'round':([2,5,],[7,9,]),'expressions':([11,22,23,],[13,40,41,]),'aliasable_expression':([11,22,23,35,],[14,14,14,47,]),'expression':([11,22,23,35,],[15,15,15,15,]),'stitch_type':([11,12,22,23,35,54,55,56,],[16,32,16,16,16,64,65,66,]),'loop':([11,22,23,35,],[18,18,18,18,]),'simple_stitch':([11,12,22,23,31,35,37,48,52,54,55,56,],[20,33,20,20,42,20,51,51,63,20,20,20,]),'grouped_stitch':([11,12,22,23,35,54,55,56,],[21,21,21,21,21,21,21,21,]),'alias':([37,48,],[49,62,]),'destination':([38,43,],[53,61,]),}
+_lr_goto_items = {'all':([0,],[1,]),'declarations':([0,],[2,]),'declaration':([0,2,],[3,6,]),'empty':([0,2,],[4,4,]),'rounds':([2,],[5,]),'round':([2,5,],[7,9,]),'expressions':([11,23,24,],[13,43,44,]),'aliasable_expression':([11,23,24,36,],[14,14,14,50,]),'expression':([11,23,24,36,],[15,15,15,15,]),'stitch_type':([11,12,20,23,24,36,42,57,58,59,],[16,33,41,16,16,16,62,68,69,70,]),'loop':([11,23,24,36,],[18,18,18,18,]),'simple_stitch':([11,12,20,23,24,32,36,38,42,51,55,57,58,59,],[21,34,21,21,21,45,21,54,34,54,67,21,21,21,]),'grouped_stitch':([11,12,20,23,24,36,42,57,58,59,],[22,22,22,22,22,22,22,22,22,22,]),'alias':([38,51,],[52,66,]),'destination':([39,46,],[56,65,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,49 +27,51 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> all","S'",1,None,None,None),
-  ('all -> declarations rounds','all',2,'p_all','parser.py',185),
-  ('declarations -> declarations declaration','declarations',2,'p_declarations_multiple','parser.py',191),
-  ('declarations -> declaration','declarations',1,'p_declarations_single','parser.py',195),
-  ('declaration -> empty','declaration',1,'p_declaration','parser.py',199),
-  ('rounds -> rounds round','rounds',2,'p_rounds_multiple','parser.py',203),
-  ('rounds -> round','rounds',1,'p_rounds_single','parser.py',208),
-  ('round -> ROUND NUMBER COLON expressions','round',4,'p_round','parser.py',214),
-  ('expressions -> expressions COMMA aliasable_expression','expressions',3,'p_expressions_multiple','parser.py',221),
-  ('expressions -> aliasable_expression','expressions',1,'p_expressions_single','parser.py',226),
-  ('aliasable_expression -> expression ( COUNTS_AS alias )','aliasable_expression',5,'p_aliasable_expressions_counts_as','parser.py',233),
-  ('aliasable_expression -> expression TO_MAKE alias','aliasable_expression',3,'p_aliasable_expression_to_make','parser.py',237),
-  ('aliasable_expression -> expression','aliasable_expression',1,'p_aliasable_expression_base_expression','parser.py',241),
-  ('expression -> stitch_type','expression',1,'p_expression_stitch','parser.py',246),
-  ('expression -> CHAIN NUMBER','expression',2,'p_expression_chain_number','parser.py',251),
-  ('expression -> NUMBER stitch_type','expression',2,'p_expression_number_stitch','parser.py',257),
-  ('expression -> NUMBER stitch_type INTO destination','expression',4,'p_expression_number_stitch_destination','parser.py',263),
-  ('expression -> stitch_type INTO destination','expression',3,'p_expression_stitch_destination','parser.py',270),
-  ('expression -> loop','expression',1,'p_expression_loop','parser.py',276),
-  ('expression -> RING','expression',1,'p_expression_ring','parser.py',280),
-  ('alias -> RING','alias',1,'p_alias_ring','parser.py',287),
-  ('alias -> simple_stitch','alias',1,'p_alias_simple_stitch','parser.py',291),
-  ('alias -> FIRST simple_stitch','alias',2,'p_alias_first_stitch','parser.py',295),
-  ('stitch_type -> simple_stitch','stitch_type',1,'p_stitch_type_simple','parser.py',303),
-  ('stitch_type -> grouped_stitch','stitch_type',1,'p_stitch_type_grouped','parser.py',307),
-  ('simple_stitch -> SC','simple_stitch',1,'p_simple_stitch_sc','parser.py',312),
-  ('simple_stitch -> DC','simple_stitch',1,'p_simple_stitch_dc','parser.py',316),
-  ('simple_stitch -> TR','simple_stitch',1,'p_simple_stitch_tr','parser.py',322),
-  ('simple_stitch -> DTR','simple_stitch',1,'p_simple_stitch_dtr','parser.py',326),
-  ('simple_stitch -> HDC','simple_stitch',1,'p_simple_stitch_hdc','parser.py',330),
-  ('simple_stitch -> SLIP_STITCH','simple_stitch',1,'p_simple_stitch_slip','parser.py',334),
-  ('simple_stitch -> CHAIN','simple_stitch',1,'p_simple_stitch_chain','parser.py',338),
-  ('simple_stitch -> STITCH','simple_stitch',1,'p_simple_stitch_generic','parser.py',342),
-  ('grouped_stitch -> NUMBER simple_stitch INCREASE','grouped_stitch',3,'p_grouped_stitch_increase','parser.py',347),
-  ('grouped_stitch -> NUMBER simple_stitch DECREASE','grouped_stitch',3,'p_grouped_stitch_decrease','parser.py',351),
-  ('grouped_stitch -> NUMBER simple_stitch POPCORN','grouped_stitch',3,'p_grouped_stitch_popcorn','parser.py',355),
-  ('destination -> NEXT stitch_type','destination',2,'p_destination_next','parser.py',361),
-  ('destination -> LAST stitch_type','destination',2,'p_destination_last','parser.py',367),
-  ('destination -> FIRST stitch_type','destination',2,'p_destination_first','parser.py',373),
-  ('destination -> ORDINAL CHAIN FROM_HOOK','destination',3,'p_destination_ordinal','parser.py',379),
-  ('destination -> RING','destination',1,'p_destination_ring','parser.py',383),
-  ('loop -> * expressions REPEAT * NUMBER TIMES','loop',6,'p_loop_number','parser.py',387),
-  ('loop -> * expressions REPEAT * AROUND','loop',5,'p_loop_around','parser.py',391),
-  ('loop -> [ expressions ] NUMBER TIMES','loop',5,'p_loop_number_brackets','parser.py',395),
-  ('loop -> [ expressions ] AROUND','loop',4,'p_loop_around_brackets','parser.py',399),
-  ('empty -> <empty>','empty',0,'p_empty','parser.py',403),
+  ('all -> declarations rounds','all',2,'p_all','parser.py',190),
+  ('declarations -> declarations declaration','declarations',2,'p_declarations_multiple','parser.py',196),
+  ('declarations -> declaration','declarations',1,'p_declarations_single','parser.py',200),
+  ('declaration -> empty','declaration',1,'p_declaration','parser.py',204),
+  ('rounds -> rounds round','rounds',2,'p_rounds_multiple','parser.py',208),
+  ('rounds -> round','rounds',1,'p_rounds_single','parser.py',213),
+  ('round -> ROUND NUMBER COLON expressions','round',4,'p_round','parser.py',219),
+  ('expressions -> expressions COMMA aliasable_expression','expressions',3,'p_expressions_multiple','parser.py',226),
+  ('expressions -> aliasable_expression','expressions',1,'p_expressions_single','parser.py',231),
+  ('aliasable_expression -> expression ( COUNTS_AS alias )','aliasable_expression',5,'p_aliasable_expressions_counts_as','parser.py',238),
+  ('aliasable_expression -> expression TO_MAKE alias','aliasable_expression',3,'p_aliasable_expression_to_make','parser.py',242),
+  ('aliasable_expression -> expression','aliasable_expression',1,'p_aliasable_expression_base_expression','parser.py',246),
+  ('expression -> stitch_type','expression',1,'p_expression_stitch','parser.py',251),
+  ('expression -> CHAIN NUMBER','expression',2,'p_expression_chain_number','parser.py',256),
+  ('expression -> NUMBER stitch_type','expression',2,'p_expression_number_stitch','parser.py',262),
+  ('expression -> NUMBER stitch_type INTO destination','expression',4,'p_expression_number_stitch_destination','parser.py',268),
+  ('expression -> stitch_type INTO destination','expression',3,'p_expression_stitch_destination','parser.py',275),
+  ('expression -> loop','expression',1,'p_expression_loop','parser.py',281),
+  ('expression -> RING','expression',1,'p_expression_ring','parser.py',285),
+  ('expression -> SKIP stitch_type','expression',2,'p_expression_skip_one','parser.py',289),
+  ('expression -> SKIP NUMBER stitch_type','expression',3,'p_expression_skip_multiple','parser.py',293),
+  ('alias -> RING','alias',1,'p_alias_ring','parser.py',299),
+  ('alias -> simple_stitch','alias',1,'p_alias_simple_stitch','parser.py',303),
+  ('alias -> FIRST simple_stitch','alias',2,'p_alias_first_stitch','parser.py',307),
+  ('stitch_type -> simple_stitch','stitch_type',1,'p_stitch_type_simple','parser.py',315),
+  ('stitch_type -> grouped_stitch','stitch_type',1,'p_stitch_type_grouped','parser.py',319),
+  ('simple_stitch -> SC','simple_stitch',1,'p_simple_stitch_sc','parser.py',324),
+  ('simple_stitch -> DC','simple_stitch',1,'p_simple_stitch_dc','parser.py',328),
+  ('simple_stitch -> TR','simple_stitch',1,'p_simple_stitch_tr','parser.py',334),
+  ('simple_stitch -> DTR','simple_stitch',1,'p_simple_stitch_dtr','parser.py',338),
+  ('simple_stitch -> HDC','simple_stitch',1,'p_simple_stitch_hdc','parser.py',342),
+  ('simple_stitch -> SLIP_STITCH','simple_stitch',1,'p_simple_stitch_slip','parser.py',346),
+  ('simple_stitch -> CHAIN','simple_stitch',1,'p_simple_stitch_chain','parser.py',350),
+  ('simple_stitch -> STITCH','simple_stitch',1,'p_simple_stitch_generic','parser.py',354),
+  ('grouped_stitch -> NUMBER simple_stitch INCREASE','grouped_stitch',3,'p_grouped_stitch_increase','parser.py',359),
+  ('grouped_stitch -> NUMBER simple_stitch DECREASE','grouped_stitch',3,'p_grouped_stitch_decrease','parser.py',363),
+  ('grouped_stitch -> NUMBER simple_stitch POPCORN','grouped_stitch',3,'p_grouped_stitch_popcorn','parser.py',367),
+  ('destination -> NEXT stitch_type','destination',2,'p_destination_next','parser.py',373),
+  ('destination -> LAST stitch_type','destination',2,'p_destination_last','parser.py',379),
+  ('destination -> FIRST stitch_type','destination',2,'p_destination_first','parser.py',385),
+  ('destination -> ORDINAL CHAIN FROM_HOOK','destination',3,'p_destination_ordinal','parser.py',391),
+  ('destination -> RING','destination',1,'p_destination_ring','parser.py',395),
+  ('loop -> * expressions REPEAT * NUMBER TIMES','loop',6,'p_loop_number','parser.py',399),
+  ('loop -> * expressions REPEAT * AROUND','loop',5,'p_loop_around','parser.py',403),
+  ('loop -> [ expressions ] NUMBER TIMES','loop',5,'p_loop_number_brackets','parser.py',407),
+  ('loop -> [ expressions ] AROUND','loop',4,'p_loop_around_brackets','parser.py',411),
+  ('empty -> <empty>','empty',0,'p_empty','parser.py',415),
 ]

@@ -69,7 +69,12 @@ class Rounds:
 class Round:
     def __init__(self, expressions):
         self.expressions : Expressions = expressions
-        
+
+class Skip:
+    def __init__(self, stitch, number):
+        self.stitch = stitch
+        self.number = number
+
 class StitchGroup:
     def __init__(self, stitch):
         self.stitch = stitch
