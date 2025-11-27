@@ -5,12 +5,14 @@
 <g id="d0">
 <path d="M-10,-20 L10,0" stroke-width="2" stroke="black" />
 <path d="M-10,0 L10,-20" stroke-width="2" stroke="black" />
-<circle cx="0" cy="0" r="2" fill="black" />
 </g>
 <g id="d1">
 <path d="M0,0 L0,-40" stroke-width="2" stroke="black" />
 <path d="M-10,-40 L10,-40" stroke-width="2" stroke="black" />
 <path d="M-7,-25 L7,-20" stroke-width="2" stroke="black" />
+</g>
+<g id="d2">
+<ellipse cx="0" cy="0" rx="6" ry="3" stroke="black" fill="none" stroke-width="1" />
 </g>
 </defs>
 <rect x="-250" y="-250" width="500" height="500" fill="white" />
@@ -46,12 +48,24 @@
 <use xlink:href="#d1" x="0" y="0" transform="translate(38.268343236509, -92.38795325112866) rotate(382.5, 0, 0)" />
 <use xlink:href="#d1" x="0" y="0" transform="translate(70.71067811865474, -70.71067811865477) rotate(405.0, 0, 0)" />
 <use xlink:href="#d1" x="0" y="0" transform="translate(92.38795325112865, -38.26834323650904) rotate(427.5, 0, 0)" />
-<ellipse cx="0" cy="0" rx="10" ry="5" transform="translate(70.71067811865476,-70.71067811865474) rotate(45.0)" fill="none" stroke="black" />
-<ellipse cx="0" cy="0" rx="10" ry="5" transform="translate(84.67241992282841,-53.20320765153366) rotate(57.857142857142854)" fill="none" stroke="black" />
-<ellipse cx="0" cy="0" rx="10" ry="5" transform="translate(94.38833303083676,-33.02790619551671) rotate(70.71428571428572)" fill="none" stroke="black" />
-<ellipse cx="0" cy="0" rx="10" ry="5" transform="translate(99.37122098932426,-11.196447610330786) rotate(83.57142857142857)" fill="none" stroke="black" />
-<ellipse cx="0" cy="0" rx="10" ry="5" transform="translate(99.37122098932426,11.196447610330786) rotate(96.42857142857143)" fill="none" stroke="black" />
-<ellipse cx="0" cy="0" rx="10" ry="5" transform="translate(94.38833303083676,33.02790619551671) rotate(109.28571428571428)" fill="none" stroke="black" />
-<ellipse cx="0" cy="0" rx="10" ry="5" transform="translate(84.67241992282841,53.20320765153366) rotate(122.14285714285714)" fill="none" stroke="black" />
-<ellipse cx="0" cy="0" rx="10" ry="5" transform="translate(70.71067811865476,70.71067811865474) rotate(135.0)" fill="none" stroke="black" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-100.0,110.0) rotate(60.00000008831649)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-92.98228738544243,121.12614080745928) rotate(55.45100284787065)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-85.067129406504,131.63196169060416) rotate(50.488332295675164)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-76.23610797089444,141.37952427859793) rotate(45.08497166368064)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-66.49181984694249,150.21287439371025) rotate(39.223547360522744)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-55.86587141662111,157.9616710466016) rotate(32.90228380897828)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-44.4269185580785,164.448558343675) rotate(26.141655930466136)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-32.28692527443761,169.50088624097162) rotate(18.990370379245668)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-19.603214034827104,172.96628245017953) rotate(11.52857810633292)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-6.573953229225594,174.72994795928514) rotate(3.8660387471217117)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(6.573953229226149,174.7299479592851) rotate(-3.8660387471220456)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(19.603214034828056,172.96628245017934) rotate(-11.528578106333477)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(32.286925274438204,169.50088624097143) rotate(-18.99037037924602)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(44.42691855807928,164.44855834367462) rotate(-26.1416559304666)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(55.865871416621474,157.96167104660137) rotate(-32.9022838089785)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(66.4918198469428,150.21287439371) rotate(-39.22354736052295)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(76.23610797089458,141.37952427859778) rotate(-45.084971663680726)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(85.06712940650405,131.6319616906041) rotate(-50.48833229567519)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(92.9822873854425,121.12614080745918) rotate(-55.45100284787069)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(100.0,110.0) rotate(-60.00000008831649)" />
 </svg>

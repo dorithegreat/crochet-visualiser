@@ -1,5 +1,6 @@
 import drawsvg as draw
 import math
+from draw_chain import draw_chain
 
 d = draw.Drawing(500, 500, origin='center')
 d.append(draw.Rectangle(-250, -250, 500, 500, fill='white'))
@@ -7,7 +8,7 @@ d.append(draw.Rectangle(-250, -250, 500, 500, fill='white'))
 single_crochet = draw.Group()
 single_crochet.append(draw.Line(-10, -20, 10, 0, stroke_width = 2, stroke = 'black'))
 single_crochet.append(draw.Line(-10, 0, 10, -20, stroke_width = 2, stroke = 'black'))
-single_crochet.append(draw.Circle(0, 0, 2, fill = 'black'))
+# single_crochet.append(draw.Circle(0, 0, 2, fill = 'black'))
 # single_crochet.append(draw.Circle(-10, -10, 2, fill = 'gray'))
 
 double_crochet = draw.Group()
@@ -30,28 +31,8 @@ for i in range (16):
     d.append(draw.Use(double_crochet, 0, 0, transform= f'translate({x}, {y}) rotate({(360 / 16) * i + 90}, 0, 0)'))
 
 
-R = 100
-N = 8
-theta_start = math.radians(-45)
-theta_end   = math.radians(45)
 
-for i in range(N):
-    theta = theta_start + i*(theta_end - theta_start)/(N-1)
-    x = R * math.cos(theta)
-    y = R * math.sin(theta)
-
-    # Rotate ellipse tangent to arc (+90°)
-    rot = math.degrees(theta) + 90
-
-    # Ellipse parameters
-    rx = 10  # horizontal radius
-    ry = 5   # vertical radius
-
-    d.append(draw.Ellipse(
-        0, 0, rx, ry,
-        transform=f"translate({x},{y}) rotate({rot})",
-        fill='none', stroke='black'
-    ))
-
+draw_chain(d,(-100, 110), (100, 110), 250, 20)
+# draw_chain(d, (0,0), (100, -30), 120, 5)
 
 d.save_svg("test2.svg")

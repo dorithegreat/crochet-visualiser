@@ -1,2 +1,4 @@
 round 1: ch 8, slip st in 8th ch from hook to make ring
 round 2: ch 2, 15 hdc in ring, slip st to first stitch
+round 3: ch3, 2 dc cluster in the same stitch, ch5, [skip next hdc, 3 dc cluster in next hdc] 7 times, slip stitch to first 2 dc cluster
+//round 4: 2 slsts into next //

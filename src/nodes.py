@@ -8,6 +8,11 @@ class All:
         self.declarations : Declarations = declarations
         self.rounds : Rounds = rounds
 
+class Cluster:
+    def __init__(self, stitch, number):
+        self.stitch = stitch
+        self.number = number
+
 class CountsAs:
     def __init__(self, stitch, alias):
         self.stitch = stitch
@@ -52,7 +57,7 @@ class Increase:
 class Loop:
     def __init__(self, expressions, number):
         self.number = number
-        self.expressions = expressions
+        self.expressions : Expressions = expressions
 
 class Popcorn:
     def __init__(self, stitch, number):
@@ -101,3 +106,6 @@ class DestinationType(Enum):
     NEXT = 1
     LAST = 2
     SAME = 3
+    FIRST = 4
+    RING = 5
+    CH_SPACE = 6

@@ -2,6 +2,7 @@ import ply.yacc as yacc
 import ply.lex as lex
 
 from preprocessor import Preprocessor
+from visualizer import Visualizer
 import nodes as nd
 
 tokens = (
@@ -293,6 +294,10 @@ def p_expression_skip_one(p):
     'expression : SKIP stitch_type'
     p[0] = nd.Skip(p[2], 1)
 
+def p_expression_skip_next(p):
+    'expression : SKIP NEXT stitch_type'
+    p[0] = nd.Skip(p[3], 1)
+
 def p_expression_skip_multiple(p):
     'expression : SKIP NUMBER stitch_type'
     p[0] = nd.Skip(p[3], p[2])
@@ -367,6 +372,10 @@ def p_grouped_stitch_decrease(p):
     'grouped_stitch : NUMBER simple_stitch DECREASE'
     p[0] = nd.Decrease(p[2], p[1])
 
+def p_grouped_stitch_cluster(p):
+    'grouped_stitch : NUMBER simple_stitch CLUSTER'
+    p[0] = nd.Cluster(p[2], p[1])
+
 def p_grouped_stitch_popcorn(p):
     'grouped_stitch : NUMBER simple_stitch POPCORN'
     p[0] = nd.Popcorn(p[2], p[1])
@@ -376,19 +385,25 @@ def p_grouped_stitch_popcorn(p):
 def p_destination_next(p):
     'destination : NEXT stitch_type'
     destination = nd.Destination(p[2])
-    destination.set_type(p[1])
+    destination.set_type(nd.DestinationType.NEXT)
     p[0] = destination
 
 def p_destination_last(p):
     'destination : LAST stitch_type'
     destination = nd.Destination(p[2])
-    destination.set_type(p[1])
+    destination.set_type(nd.DestinationType.LAST)
     p[0] = destination
 
 def p_destination_first(p):
     'destination : FIRST stitch_type'
     destination = nd.Destination(p[2])
-    destination.set_type(p[1])
+    destination.set_type(nd.DestinationType.FIRST)
+    p[0] = destination
+
+def p_destination_same(p):
+    'destination : SAME stitch_type'
+    destination = nd.Destination(p[2])
+    destination.set_type(nd.DestinationType.SAME)
     p[0] = destination
 
 def p_destination_ordinal(p):
@@ -397,7 +412,9 @@ def p_destination_ordinal(p):
 
 def p_destination_ring(p):
     'destination : RING'
-    p[0] = nd.Destination(p[1])
+    destination = nd.Destination(p[1])
+    destination.set_type(nd.DestinationType.RING)
+    p[0] = destination
 
 def p_loop_number(p):
     '''loop : '*' expressions REPEAT '*' number_times '''
@@ -419,7 +436,7 @@ def p_number_times(p):
     'number_times : NUMBER TIMES'
     p[0] = p[1]
 
-def p_number_times(p):
+def p_number_times_twice(p):
     'number_times : TWICE'
     p[0] = 2
 
@@ -443,7 +460,7 @@ parser = yacc.yacc(debug=True,debuglog=log)
 
 if __name__ == "__main__":
     # f = open(sys.argv[1], "r")
-    f = open("/home/dorithegreat/Documents/programs/praca inżynierska/crochet-visualiser/patterns/arcanoweave_1.txt", "r")
+    f = open("/home/dorithegreat/Documents/programs/praca inżynierska/crochet-visualiser/patterns/pinterest_1.txt", "r")
     text = f.read()
     text = text.lower()
 
@@ -452,4 +469,7 @@ tree = parser.parse(text, debug=log)
 # print(tree)
 
 preprocessor = Preprocessor()
-preprocessor.preprocess(tree)
+flattened = preprocessor.preprocess(tree)
+
+visualizer = Visualizer()
+visualizer.visualize(flattened)
