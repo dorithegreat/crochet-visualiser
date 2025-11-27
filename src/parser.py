@@ -306,7 +306,7 @@ def p_expression_skip_multiple(p):
 
 def p_alias_ring(p):
     'alias : RING'
-    p[0] = nd.Alias(p[1])
+    p[0] = nd.Alias(nd.DestinationType.RING)
 
 def p_alias_simple_stitch(p):
     'alias : simple_stitch'

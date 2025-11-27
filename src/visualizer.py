@@ -1,5 +1,5 @@
 import drawsvg as draw
-from draw_chain import draw_chain
+from draw_utilities import draw_chain, draw_base_chain
 from preprocessor import Stitch, SingularStitch, ComplexStitch
 
 # go through each round one by one
@@ -17,9 +17,16 @@ class Visualizer:
     
     def visualize(self, rounds):
         self.initialize_drawing(rounds)
+
+        # this could be one long if but it would be utterly illegible
+        if len(rounds[0]) == 2:
+            if type(rounds[0][0].type) is tuple and rounds[0][0].type[0] == ComplexStitch.CH_SPACE:
+                if type(rounds[0][1].type) == SingularStitch and rounds[0][1].type == SingularStitch.SLIP:
+                    if len(rounds[0][1].anchors) == 1 and rounds[0][1].anchors[0] == rounds[0][1].previous:
+                        draw_base_chain(self.drawing, rounds[0][0].type[1])
         
         for round in rounds:
-            pass
+            self.visualize_round(round)
         
         print("test")
         self.drawing.save_svg("output.svg")
@@ -27,7 +34,9 @@ class Visualizer:
     # this function takes rounds as parameter to calculate the size of canvas based on the amount of rounds
     def initialize_drawing(self, rounds):
         # TODO find a more accurate constant
-        self.drawing = draw.Drawing(30 * len(rounds), 30 * len(rounds), origin='center')
+        side = 100 * len(rounds)
+        self.drawing = draw.Drawing(side, side, origin='center')
+        self.drawing.append(draw.Rectangle(0 - side / 2, 0 -side / 2, side, side, fill='white'))
     
     def visualize_round(self, round):
         anchored, simple_chains, special_cases = self.split_round_into_sets(round)
@@ -35,7 +44,7 @@ class Visualizer:
         for stitch in anchored:
             self.draw_stitch(stitch)
         for chain in simple_chains:
-            self.draw_chain()
+            self.draw_chain(chain)
         
         # TODO handle special cases
 
@@ -56,8 +65,8 @@ class Visualizer:
         
         return (anchored, simple_chains, special_cases)
     
-    def draw_stitch():
+    def draw_stitch(self, stitch):
         pass
     
-    def draw_chain():
+    def draw_chain(self, chain):
         pass

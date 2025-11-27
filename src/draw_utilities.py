@@ -132,7 +132,7 @@ def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30):
     samples = sample_bezier_by_arclength(P0_local, P1_local, P2_local, P3_local, n_samples=n_ellipses)
     # ellipse shape
     shape = draw.Group()
-    shape.append(draw.Ellipse(0, 0, 6, 3, stroke='black', fill='none', stroke_width=1))
+    shape.append(draw.Ellipse(0, 0, 10, 4, stroke='black', fill='none', stroke_width=1))
     for t_local, (lx,ly), (dx_local,dy_local) in samples:
         wx, wy = to_world(lx, ly)
         dxw = dx_local * cosA - dy_local * sinA
@@ -140,3 +140,75 @@ def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30):
         ang = math.degrees(math.atan2(dyw, dxw))
         drawing.append(draw.Use(shape, 0, 0, transform=f"translate({wx},{wy}) rotate({ang})"))
     return h  # optional return of control height for reference
+
+
+def draw_base_chain(drawing, n, radius=40, a=10, b=4, target_angle_deg=-45):
+    """
+    Adds n normal ellipses + 1 shaded ellipse to an existing drawsvg.Drawing.
+
+    Parameters
+    ----------
+    drawing : drawsvg.Drawing
+        The drawing to append ellipses into.
+    n : int
+        Number of normal ellipses. Total ellipses = n + 1.
+    radius : float
+        Distance from the origin to ellipse centers.
+    a : float
+        Semi-major axis (long radius).
+    b : float
+        Semi-minor axis (short radius).
+    target_angle_deg : float
+        Direction (in SVG coordinate degrees) where the shaded ellipse should appear.
+        (SVG: negative angles go upward, so top-right = -45°)
+    """
+        
+    total_slots = n + 1
+    angle_step = 2 * math.pi / total_slots
+    target_angle = math.radians(target_angle_deg)
+
+    # Slot angles
+    slot_angles = [i * angle_step for i in range(total_slots)]
+
+    # Normalize helper
+    norm = lambda a: a % (2 * math.pi)
+
+    # Circular distance
+    def circ_dist(a, b):
+        diff = abs(a - b) % (2 * math.pi)
+        return min(diff, 2 * math.pi - diff)
+
+    # Find the slot closest to the desired angle
+    shaded_index = min(
+        range(total_slots),
+        key=lambda i: circ_dist(norm(slot_angles[i]), norm(target_angle))
+    )
+    shaded_angle = slot_angles[shaded_index]
+
+    # --- Draw normal ellipses ---
+    for i, theta in enumerate(slot_angles):
+        if i == shaded_index:
+            continue
+
+        x = radius * math.cos(theta)
+        y = radius * math.sin(theta)
+        angle_deg = math.degrees(theta + math.pi/2)
+
+        ell = draw.Ellipse(
+            x, y, a, b,
+            fill='none', stroke='black',
+            transform=f'rotate({angle_deg},{x},{y})'
+        )
+        drawing.append(ell)
+
+    # --- Draw shaded ellipse ---
+    sx = radius * math.cos(shaded_angle)
+    sy = radius * math.sin(shaded_angle)
+    shaded_rot = math.degrees(shaded_angle + math.pi/2)
+
+    shaded = draw.Ellipse(
+        sx, sy, a * 0.6, b * 0.6,
+        fill='black', stroke='black',
+        transform=f'rotate({shaded_rot},{sx},{sy})'
+    )
+    drawing.append(shaded)
