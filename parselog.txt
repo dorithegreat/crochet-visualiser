@@ -81,17 +81,17 @@
    yacc.py: 411:State  : 40
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON CHAIN NUMBER . LexToken(COMMA,',',1,13)
    yacc.py: 469:Action : Reduce rule [expression -> CHAIN NUMBER] with ['ch',8] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebd40> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8e152c00> (<nodes.StitchGroup object at 0x7c8a8e152 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expression . LexToken(COMMA,',',1,13)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7d12d08ebd40>] and goto state 14
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebd40> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7c8a8e152c00>] and goto state 14
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8e152c00> (<nodes.StitchGroup object at 0x7c8a8e152 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 14
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON aliasable_expression . LexToken(COMMA,',',1,13)
-   yacc.py: 469:Action : Reduce rule [expressions -> aliasable_expression] with [<StitchGroup @ 0x7d12d08ebd40>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebef0> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> aliasable_expression] with [<StitchGroup @ 0x7c8a8e152c00>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d810050> (<nodes.Expressions object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions . LexToken(COMMA,',',1,13)
@@ -104,12 +104,12 @@
    yacc.py: 411:State  : 30
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions COMMA SLIP_STITCH . LexToken(INTO,'in',1,23)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> SLIP_STITCH] with ['slip st'] and goto state 21
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3e90> (<SimpleStitch.SLIP: 6>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267e30> (<SimpleStitch.SLIP: 6>)
    yacc.py: 410:
    yacc.py: 411:State  : 21
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions COMMA simple_stitch . LexToken(INTO,'in',1,23)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7d12d13c3e90>] and goto state 16
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebfb0> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7c8a8e267e30>] and goto state 16
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810140> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 16
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions COMMA stitch_type . LexToken(INTO,'in',1,23)
@@ -130,12 +130,12 @@
    yacc.py: 411:State  : 83
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions COMMA stitch_type INTO ORDINAL CHAIN FROM_HOOK . LexToken(TO_MAKE,'to make',1,43)
    yacc.py: 469:Action : Reduce rule [destination -> ORDINAL CHAIN FROM_HOOK] with [8,'ch','from hook'] and goto state 58
-   yacc.py: 506:Result : <Destination_Ordinal @ 0x7d12d0a46690> (<nodes.Destination_Ordinal object at 0x7 ...)
+   yacc.py: 506:Result : <Destination_Ordinal @ 0x7c8a8d810110> (<nodes.Destination_Ordinal object at 0x7 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 58
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions COMMA stitch_type INTO destination . LexToken(TO_MAKE,'to make',1,43)
-   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7d12d08ebfb0>,'in',<Destination_Ordinal @ 0x7d12d0a46690>] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebfb0> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7c8a8d810140>,'in',<Destination_Ordinal @ 0x7c8a8d810110>] and goto state 15
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810140> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions COMMA expression . LexToken(TO_MAKE,'to make',1,43)
@@ -148,27 +148,27 @@
    yacc.py: 411:State  : 55
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions COMMA expression TO_MAKE RING . LexToken(ROUND,'round',1,56)
    yacc.py: 469:Action : Reduce rule [alias -> RING] with ['ring'] and goto state 54
-   yacc.py: 506:Result : <Alias @ 0x7d12d08ebf20> (<nodes.Alias object at 0x7d12d08ebf20>)
+   yacc.py: 506:Result : <Alias @ 0x7c8a8dfba450> (<nodes.Alias object at 0x7c8a8dfba450>)
    yacc.py: 410:
    yacc.py: 411:State  : 54
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions COMMA expression TO_MAKE alias . LexToken(ROUND,'round',1,56)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression TO_MAKE alias] with [<StitchGroup @ 0x7d12d08ebfb0>,'to make',<Alias @ 0x7d12d08ebf20>] and goto state 52
-   yacc.py: 506:Result : <CountsAs @ 0x7d12d08ebfe0> (<nodes.CountsAs object at 0x7d12d08ebfe0 ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression TO_MAKE alias] with [<StitchGroup @ 0x7c8a8d810140>,'to make',<Alias @ 0x7c8a8dfba450>] and goto state 52
+   yacc.py: 506:Result : <CountsAs @ 0x7c8a8d8101d0> (<nodes.CountsAs object at 0x7c8a8d8101d0 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 52
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions COMMA aliasable_expression . LexToken(ROUND,'round',1,56)
-   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7d12d08ebef0>,',',<CountsAs @ 0x7d12d08ebfe0>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebef0> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7c8a8d810050>,',',<CountsAs @ 0x7c8a8d8101d0>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d810050> (<nodes.Expressions object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations ROUND NUMBER COLON expressions . LexToken(ROUND,'round',1,56)
-   yacc.py: 469:Action : Reduce rule [round -> ROUND NUMBER COLON expressions] with ['round',1,':',<Expressions @ 0x7d12d08ebef0>] and goto state 7
-   yacc.py: 506:Result : <Round @ 0x7d12d0bc6090> (<nodes.Round object at 0x7d12d0bc6090>)
+   yacc.py: 469:Action : Reduce rule [round -> ROUND NUMBER COLON expressions] with ['round',1,':',<Expressions @ 0x7c8a8d810050>] and goto state 7
+   yacc.py: 506:Result : <Round @ 0x7c8a8d8100b0> (<nodes.Round object at 0x7c8a8d8100b0>)
    yacc.py: 410:
    yacc.py: 411:State  : 7
    yacc.py: 434:Stack  : declarations round . LexToken(ROUND,'round',1,56)
-   yacc.py: 469:Action : Reduce rule [rounds -> round] with [<Round @ 0x7d12d0bc6090>] and goto state 5
-   yacc.py: 506:Result : <Rounds @ 0x7d12d15fc710> (<nodes.Rounds object at 0x7d12d15fc710>)
+   yacc.py: 469:Action : Reduce rule [rounds -> round] with [<Round @ 0x7c8a8d8100b0>] and goto state 5
+   yacc.py: 506:Result : <Rounds @ 0x7c8a8d810230> (<nodes.Rounds object at 0x7c8a8d810230>)
    yacc.py: 410:
    yacc.py: 411:State  : 5
    yacc.py: 434:Stack  : declarations rounds . LexToken(ROUND,'round',1,56)
@@ -193,17 +193,17 @@
    yacc.py: 411:State  : 40
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON CHAIN NUMBER . LexToken(COMMA,',',1,69)
    yacc.py: 469:Action : Reduce rule [expression -> CHAIN NUMBER] with ['ch',2] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebe00> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8102f0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expression . LexToken(COMMA,',',1,69)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7d12d08ebe00>] and goto state 14
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebe00> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7c8a8d8102f0>] and goto state 14
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8102f0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 14
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON aliasable_expression . LexToken(COMMA,',',1,69)
-   yacc.py: 469:Action : Reduce rule [expressions -> aliasable_expression] with [<StitchGroup @ 0x7d12d08ebe00>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebf50> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> aliasable_expression] with [<StitchGroup @ 0x7c8a8d8102f0>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d810170> (<nodes.Expressions object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions . LexToken(COMMA,',',1,69)
@@ -220,12 +220,12 @@
    yacc.py: 411:State  : 29
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA NUMBER HDC . LexToken(INTO,'in',1,78)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> HDC] with ['hdc'] and goto state 34
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3e60> (<SimpleStitch.HDC: 5>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267e00> (<SimpleStitch.HDC: 5>)
    yacc.py: 410:
    yacc.py: 411:State  : 34
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA NUMBER simple_stitch . LexToken(INTO,'in',1,78)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7d12d13c3e60>] and goto state 33
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebd70> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7c8a8e267e00>] and goto state 33
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8101a0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 33
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA NUMBER stitch_type . LexToken(INTO,'in',1,78)
@@ -238,22 +238,22 @@
    yacc.py: 411:State  : 64
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA NUMBER stitch_type INTO RING . LexToken(COMMA,',',1,85)
    yacc.py: 469:Action : Reduce rule [destination -> RING] with ['ring'] and goto state 69
-   yacc.py: 506:Result : <Destination @ 0x7d12d092e840> (<nodes.Destination object at 0x7d12d092e ...)
+   yacc.py: 506:Result : <Destination @ 0x7c8a8d8102c0> (<nodes.Destination object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 69
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA NUMBER stitch_type INTO destination . LexToken(COMMA,',',1,85)
-   yacc.py: 469:Action : Reduce rule [expression -> NUMBER stitch_type INTO destination] with [15,<StitchGroup @ 0x7d12d08ebd70>,'in',<Destination @ 0x7d12d092e840>] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebd70> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expression -> NUMBER stitch_type INTO destination] with [15,<StitchGroup @ 0x7c8a8d8101a0>,'in',<Destination @ 0x7c8a8d8102c0>] and goto state 15
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8101a0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA expression . LexToken(COMMA,',',1,85)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7d12d08ebd70>] and goto state 52
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebd70> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7c8a8d8101a0>] and goto state 52
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8101a0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 52
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA aliasable_expression . LexToken(COMMA,',',1,85)
-   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7d12d08ebf50>,',',<StitchGroup @ 0x7d12d08ebd70>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebf50> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7c8a8d810170>,',',<StitchGroup @ 0x7c8a8d8101a0>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d810170> (<nodes.Expressions object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions . LexToken(COMMA,',',1,85)
@@ -266,12 +266,12 @@
    yacc.py: 411:State  : 30
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA SLIP_STITCH . LexToken(INTO,'to',1,95)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> SLIP_STITCH] with ['slip st'] and goto state 21
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3e90> (<SimpleStitch.SLIP: 6>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267e30> (<SimpleStitch.SLIP: 6>)
    yacc.py: 410:
    yacc.py: 411:State  : 21
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA simple_stitch . LexToken(INTO,'to',1,95)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7d12d13c3e90>] and goto state 16
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebdd0> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7c8a8e267e30>] and goto state 16
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810290> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 16
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type . LexToken(INTO,'to',1,95)
@@ -288,42 +288,42 @@
    yacc.py: 411:State  : 31
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO FIRST STITCH . LexToken(ROUND,'round',1,111)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> STITCH] with ['stitch'] and goto state 21
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3ef0> (<SimpleStitch.STITCH: 8>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267e90> (<SimpleStitch.STITCH: 8>)
    yacc.py: 410:
    yacc.py: 411:State  : 21
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO FIRST simple_stitch . LexToken(ROUND,'round',1,111)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7d12d13c3ef0>] and goto state 74
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c170> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7c8a8e267e90>] and goto state 74
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8104a0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 74
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO FIRST stitch_type . LexToken(ROUND,'round',1,111)
-   yacc.py: 469:Action : Reduce rule [destination -> FIRST stitch_type] with ['first',<StitchGroup @ 0x7d12d092c170>] and goto state 58
-   yacc.py: 506:Result : <Destination @ 0x7d12d092c140> (<nodes.Destination object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [destination -> FIRST stitch_type] with ['first',<StitchGroup @ 0x7c8a8d8104a0>] and goto state 58
+   yacc.py: 506:Result : <Destination @ 0x7c8a8d810440> (<nodes.Destination object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 58
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO destination . LexToken(ROUND,'round',1,111)
-   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7d12d08ebdd0>,'to',<Destination @ 0x7d12d092c140>] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebdd0> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7c8a8d810290>,'to',<Destination @ 0x7c8a8d810440>] and goto state 15
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810290> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA expression . LexToken(ROUND,'round',1,111)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7d12d08ebdd0>] and goto state 52
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebdd0> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7c8a8d810290>] and goto state 52
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810290> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 52
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA aliasable_expression . LexToken(ROUND,'round',1,111)
-   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7d12d08ebf50>,',',<StitchGroup @ 0x7d12d08ebdd0>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebf50> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7c8a8d810170>,',',<StitchGroup @ 0x7c8a8d810290>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d810170> (<nodes.Expressions object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions . LexToken(ROUND,'round',1,111)
-   yacc.py: 469:Action : Reduce rule [round -> ROUND NUMBER COLON expressions] with ['round',2,':',<Expressions @ 0x7d12d08ebf50>] and goto state 9
-   yacc.py: 506:Result : <Round @ 0x7d12d092c080> (<nodes.Round object at 0x7d12d092c080>)
+   yacc.py: 469:Action : Reduce rule [round -> ROUND NUMBER COLON expressions] with ['round',2,':',<Expressions @ 0x7c8a8d810170>] and goto state 9
+   yacc.py: 506:Result : <Round @ 0x7c8a8d810650> (<nodes.Round object at 0x7c8a8d810650>)
    yacc.py: 410:
    yacc.py: 411:State  : 9
    yacc.py: 434:Stack  : declarations rounds round . LexToken(ROUND,'round',1,111)
-   yacc.py: 469:Action : Reduce rule [rounds -> rounds round] with [<Rounds @ 0x7d12d15fc710>,<Round @ 0x7d12d092c080>] and goto state 5
-   yacc.py: 506:Result : <Rounds @ 0x7d12d15fc710> (<nodes.Rounds object at 0x7d12d15fc710>)
+   yacc.py: 469:Action : Reduce rule [rounds -> rounds round] with [<Rounds @ 0x7c8a8d810230>,<Round @ 0x7c8a8d810650>] and goto state 5
+   yacc.py: 506:Result : <Rounds @ 0x7c8a8d810230> (<nodes.Rounds object at 0x7c8a8d810230>)
    yacc.py: 410:
    yacc.py: 411:State  : 5
    yacc.py: 434:Stack  : declarations rounds . LexToken(ROUND,'round',1,111)
@@ -348,17 +348,17 @@
    yacc.py: 411:State  : 40
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON CHAIN NUMBER . LexToken(COMMA,',',1,123)
    yacc.py: 469:Action : Reduce rule [expression -> CHAIN NUMBER] with ['ch',3] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebe30> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810080> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expression . LexToken(COMMA,',',1,123)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7d12d08ebe30>] and goto state 14
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebe30> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7c8a8d810080>] and goto state 14
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810080> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 14
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON aliasable_expression . LexToken(COMMA,',',1,123)
-   yacc.py: 469:Action : Reduce rule [expressions -> aliasable_expression] with [<StitchGroup @ 0x7d12d08ebe30>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebe90> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> aliasable_expression] with [<StitchGroup @ 0x7c8a8d810080>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d812ae0> (<nodes.Expressions object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions . LexToken(COMMA,',',1,123)
@@ -375,7 +375,7 @@
    yacc.py: 411:State  : 26
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA NUMBER DC . LexToken(CLUSTER,'cluster',1,130)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> DC] with ['dc'] and goto state 34
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3e00> (<SimpleStitch.DC: 2>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267d70> (<SimpleStitch.DC: 2>)
    yacc.py: 410:
    yacc.py: 411:State  : 34
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA NUMBER simple_stitch . LexToken(CLUSTER,'cluster',1,130)
@@ -383,13 +383,13 @@
    yacc.py: 410:
    yacc.py: 411:State  : 50
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA NUMBER simple_stitch CLUSTER . LexToken(INTO,'in',1,138)
-   yacc.py: 469:Action : Reduce rule [grouped_stitch -> NUMBER simple_stitch CLUSTER] with [2,<SimpleStitch @ 0x7d12d13c3e00>,'cluster'] and goto state 22
-   yacc.py: 506:Result : <Cluster @ 0x7d12d092c380> (<nodes.Cluster object at 0x7d12d092c380>)
+   yacc.py: 469:Action : Reduce rule [grouped_stitch -> NUMBER simple_stitch CLUSTER] with [2,<SimpleStitch @ 0x7c8a8e267d70>,'cluster'] and goto state 22
+   yacc.py: 506:Result : <Cluster @ 0x7c8a8d812b10> (<nodes.Cluster object at 0x7c8a8d812b10>)
    yacc.py: 410:
    yacc.py: 411:State  : 22
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA grouped_stitch . LexToken(INTO,'in',1,138)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> grouped_stitch] with [<Cluster @ 0x7d12d092c380>] and goto state 16
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092e810> (<nodes.StitchGroup object at 0x7d12d092e ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> grouped_stitch] with [<Cluster @ 0x7c8a8d812b10>] and goto state 16
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810410> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 16
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type . LexToken(INTO,'in',1,138)
@@ -406,32 +406,32 @@
    yacc.py: 411:State  : 31
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO SAME STITCH . LexToken(COMMA,',',1,156)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> STITCH] with ['stitch'] and goto state 21
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3ef0> (<SimpleStitch.STITCH: 8>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267e90> (<SimpleStitch.STITCH: 8>)
    yacc.py: 410:
    yacc.py: 411:State  : 21
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO SAME simple_stitch . LexToken(COMMA,',',1,156)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7d12d13c3ef0>] and goto state 75
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c1d0> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7c8a8e267e90>] and goto state 75
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810500> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 75
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO SAME stitch_type . LexToken(COMMA,',',1,156)
-   yacc.py: 469:Action : Reduce rule [destination -> SAME stitch_type] with ['same',<StitchGroup @ 0x7d12d092c1d0>] and goto state 58
-   yacc.py: 506:Result : <Destination @ 0x7d12d092c200> (<nodes.Destination object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [destination -> SAME stitch_type] with ['same',<StitchGroup @ 0x7c8a8d810500>] and goto state 58
+   yacc.py: 506:Result : <Destination @ 0x7c8a8d810530> (<nodes.Destination object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 58
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO destination . LexToken(COMMA,',',1,156)
-   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7d12d092e810>,'in',<Destination @ 0x7d12d092c200>] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092e810> (<nodes.StitchGroup object at 0x7d12d092e ...)
+   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7c8a8d810410>,'in',<Destination @ 0x7c8a8d810530>] and goto state 15
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810410> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA expression . LexToken(COMMA,',',1,156)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7d12d092e810>] and goto state 52
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092e810> (<nodes.StitchGroup object at 0x7d12d092e ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7c8a8d810410>] and goto state 52
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810410> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 52
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA aliasable_expression . LexToken(COMMA,',',1,156)
-   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7d12d08ebe90>,',',<StitchGroup @ 0x7d12d092e810>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebe90> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7c8a8d812ae0>,',',<StitchGroup @ 0x7c8a8d810410>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d812ae0> (<nodes.Expressions object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions . LexToken(COMMA,',',1,156)
@@ -448,17 +448,17 @@
    yacc.py: 411:State  : 40
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA CHAIN NUMBER . LexToken(COMMA,',',1,161)
    yacc.py: 469:Action : Reduce rule [expression -> CHAIN NUMBER] with ['ch',5] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebec0> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d812bd0> (<nodes.StitchGroup object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA expression . LexToken(COMMA,',',1,161)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7d12d08ebec0>] and goto state 52
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d08ebec0> (<nodes.StitchGroup object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7c8a8d812bd0>] and goto state 52
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d812bd0> (<nodes.StitchGroup object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 52
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA aliasable_expression . LexToken(COMMA,',',1,161)
-   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7d12d08ebe90>,',',<StitchGroup @ 0x7d12d08ebec0>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebe90> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7c8a8d812ae0>,',',<StitchGroup @ 0x7c8a8d812bd0>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d812ae0> (<nodes.Expressions object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions . LexToken(COMMA,',',1,161)
@@ -483,27 +483,27 @@
    yacc.py: 411:State  : 29
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ SKIP NEXT HDC . LexToken(COMMA,',',1,177)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> HDC] with ['hdc'] and goto state 21
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3e60> (<SimpleStitch.HDC: 5>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267e00> (<SimpleStitch.HDC: 5>)
    yacc.py: 410:
    yacc.py: 411:State  : 21
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ SKIP NEXT simple_stitch . LexToken(COMMA,',',1,177)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7d12d13c3e60>] and goto state 65
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c2c0> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7c8a8e267e00>] and goto state 65
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8105f0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 65
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ SKIP NEXT stitch_type . LexToken(COMMA,',',1,177)
-   yacc.py: 469:Action : Reduce rule [expression -> SKIP NEXT stitch_type] with ['skip','next',<StitchGroup @ 0x7d12d092c2c0>] and goto state 15
-   yacc.py: 506:Result : <Skip @ 0x7d12d092e8a0> (<nodes.Skip object at 0x7d12d092e8a0>)
+   yacc.py: 469:Action : Reduce rule [expression -> SKIP NEXT stitch_type] with ['skip','next',<StitchGroup @ 0x7c8a8d8105f0>] and goto state 15
+   yacc.py: 506:Result : <Skip @ 0x7c8a8d812c00> (<nodes.Skip object at 0x7c8a8d812c00>)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expression . LexToken(COMMA,',',1,177)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<Skip @ 0x7d12d092e8a0>] and goto state 14
-   yacc.py: 506:Result : <Skip @ 0x7d12d092e8a0> (<nodes.Skip object at 0x7d12d092e8a0>)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<Skip @ 0x7c8a8d812c00>] and goto state 14
+   yacc.py: 506:Result : <Skip @ 0x7c8a8d812c00> (<nodes.Skip object at 0x7c8a8d812c00>)
    yacc.py: 410:
    yacc.py: 411:State  : 14
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ aliasable_expression . LexToken(COMMA,',',1,177)
-   yacc.py: 469:Action : Reduce rule [expressions -> aliasable_expression] with [<Skip @ 0x7d12d092e8a0>] and goto state 45
-   yacc.py: 506:Result : <Expressions @ 0x7d12d092c350> (<nodes.Expressions object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> aliasable_expression] with [<Skip @ 0x7c8a8d812c00>] and goto state 45
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d8106e0> (<nodes.Expressions object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 45
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions . LexToken(COMMA,',',1,177)
@@ -520,7 +520,7 @@
    yacc.py: 411:State  : 26
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA NUMBER DC . LexToken(CLUSTER,'cluster',1,184)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> DC] with ['dc'] and goto state 34
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3e00> (<SimpleStitch.DC: 2>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267d70> (<SimpleStitch.DC: 2>)
    yacc.py: 410:
    yacc.py: 411:State  : 34
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA NUMBER simple_stitch . LexToken(CLUSTER,'cluster',1,184)
@@ -528,13 +528,13 @@
    yacc.py: 410:
    yacc.py: 411:State  : 50
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA NUMBER simple_stitch CLUSTER . LexToken(INTO,'in',1,192)
-   yacc.py: 469:Action : Reduce rule [grouped_stitch -> NUMBER simple_stitch CLUSTER] with [3,<SimpleStitch @ 0x7d12d13c3e00>,'cluster'] and goto state 22
-   yacc.py: 506:Result : <Cluster @ 0x7d12d092e930> (<nodes.Cluster object at 0x7d12d092e930>)
+   yacc.py: 469:Action : Reduce rule [grouped_stitch -> NUMBER simple_stitch CLUSTER] with [3,<SimpleStitch @ 0x7c8a8e267d70>,'cluster'] and goto state 22
+   yacc.py: 506:Result : <Cluster @ 0x7c8a8d810200> (<nodes.Cluster object at 0x7c8a8d810200>)
    yacc.py: 410:
    yacc.py: 411:State  : 22
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA grouped_stitch . LexToken(INTO,'in',1,192)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> grouped_stitch] with [<Cluster @ 0x7d12d092e930>] and goto state 16
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c110> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> grouped_stitch] with [<Cluster @ 0x7c8a8d810200>] and goto state 16
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d812c30> (<nodes.StitchGroup object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 16
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA stitch_type . LexToken(INTO,'in',1,192)
@@ -551,32 +551,32 @@
    yacc.py: 411:State  : 29
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA stitch_type INTO NEXT HDC . LexToken(],']',1,203)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> HDC] with ['hdc'] and goto state 21
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3e60> (<SimpleStitch.HDC: 5>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267e00> (<SimpleStitch.HDC: 5>)
    yacc.py: 410:
    yacc.py: 411:State  : 21
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA stitch_type INTO NEXT simple_stitch . LexToken(],']',1,203)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7d12d13c3e60>] and goto state 72
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c470> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7c8a8e267e00>] and goto state 72
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d810770> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 72
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA stitch_type INTO NEXT stitch_type . LexToken(],']',1,203)
-   yacc.py: 469:Action : Reduce rule [destination -> NEXT stitch_type] with ['next',<StitchGroup @ 0x7d12d092c470>] and goto state 58
-   yacc.py: 506:Result : <Destination @ 0x7d12d092c4a0> (<nodes.Destination object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [destination -> NEXT stitch_type] with ['next',<StitchGroup @ 0x7c8a8d810770>] and goto state 58
+   yacc.py: 506:Result : <Destination @ 0x7c8a8d810800> (<nodes.Destination object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 58
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA stitch_type INTO destination . LexToken(],']',1,203)
-   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7d12d092c110>,'in',<Destination @ 0x7d12d092c4a0>] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c110> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7c8a8d812c30>,'in',<Destination @ 0x7c8a8d810800>] and goto state 15
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d812c30> (<nodes.StitchGroup object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA expression . LexToken(],']',1,203)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7d12d092c110>] and goto state 52
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c110> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7c8a8d812c30>] and goto state 52
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d812c30> (<nodes.StitchGroup object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 52
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions COMMA aliasable_expression . LexToken(],']',1,203)
-   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7d12d092c350>,',',<StitchGroup @ 0x7d12d092c110>] and goto state 45
-   yacc.py: 506:Result : <Expressions @ 0x7d12d092c350> (<nodes.Expressions object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7c8a8d8106e0>,',',<StitchGroup @ 0x7c8a8d812c30>] and goto state 45
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d8106e0> (<nodes.Expressions object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 45
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions . LexToken(],']',1,203)
@@ -597,23 +597,23 @@
    yacc.py: 410:
    yacc.py: 411:State  : 78
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA [ expressions ] number_times . LexToken(COMMA,',',1,212)
-   yacc.py: 469:Action : Reduce rule [loop -> [ expressions ] number_times] with ['[',<Expressions @ 0x7d12d092c350>,']',7] and goto state 18
-   yacc.py: 506:Result : <Loop @ 0x7d12d092c260> (<nodes.Loop object at 0x7d12d092c260>)
+   yacc.py: 469:Action : Reduce rule [loop -> [ expressions ] number_times] with ['[',<Expressions @ 0x7c8a8d8106e0>,']',7] and goto state 18
+   yacc.py: 506:Result : <Loop @ 0x7c8a8df9bef0> (<nodes.Loop object at 0x7c8a8df9bef0>)
    yacc.py: 410:
    yacc.py: 411:State  : 18
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA loop . LexToken(COMMA,',',1,212)
-   yacc.py: 469:Action : Reduce rule [expression -> loop] with [<Loop @ 0x7d12d092c260>] and goto state 15
-   yacc.py: 506:Result : <Loop @ 0x7d12d092c260> (<nodes.Loop object at 0x7d12d092c260>)
+   yacc.py: 469:Action : Reduce rule [expression -> loop] with [<Loop @ 0x7c8a8df9bef0>] and goto state 15
+   yacc.py: 506:Result : <Loop @ 0x7c8a8df9bef0> (<nodes.Loop object at 0x7c8a8df9bef0>)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA expression . LexToken(COMMA,',',1,212)
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<Loop @ 0x7d12d092c260>] and goto state 52
-   yacc.py: 506:Result : <Loop @ 0x7d12d092c260> (<nodes.Loop object at 0x7d12d092c260>)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<Loop @ 0x7c8a8df9bef0>] and goto state 52
+   yacc.py: 506:Result : <Loop @ 0x7c8a8df9bef0> (<nodes.Loop object at 0x7c8a8df9bef0>)
    yacc.py: 410:
    yacc.py: 411:State  : 52
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA aliasable_expression . LexToken(COMMA,',',1,212)
-   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7d12d08ebe90>,',',<Loop @ 0x7d12d092c260>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebe90> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7c8a8d812ae0>,',',<Loop @ 0x7c8a8df9bef0>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d812ae0> (<nodes.Expressions object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions . LexToken(COMMA,',',1,212)
@@ -626,12 +626,12 @@
    yacc.py: 411:State  : 30
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA SLIP_STITCH . LexToken(INTO,'to',1,226)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> SLIP_STITCH] with ['slip stitch'] and goto state 21
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3e90> (<SimpleStitch.SLIP: 6>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267e30> (<SimpleStitch.SLIP: 6>)
    yacc.py: 410:
    yacc.py: 411:State  : 21
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA simple_stitch . LexToken(INTO,'to',1,226)
-   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7d12d13c3e90>] and goto state 16
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c440> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> simple_stitch] with [<SimpleStitch @ 0x7c8a8e267e30>] and goto state 16
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8107d0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 16
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type . LexToken(INTO,'to',1,226)
@@ -652,7 +652,7 @@
    yacc.py: 411:State  : 26
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO FIRST NUMBER DC . LexToken(CLUSTER,'cluster',1,240)
    yacc.py: 469:Action : Reduce rule [simple_stitch -> DC] with ['dc'] and goto state 46
-   yacc.py: 506:Result : <SimpleStitch @ 0x7d12d13c3e00> (<SimpleStitch.DC: 2>)
+   yacc.py: 506:Result : <SimpleStitch @ 0x7c8a8e267d70> (<SimpleStitch.DC: 2>)
    yacc.py: 410:
    yacc.py: 411:State  : 46
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO FIRST NUMBER simple_stitch . LexToken(CLUSTER,'cluster',1,240)
@@ -660,50 +660,50 @@
    yacc.py: 410:
    yacc.py: 411:State  : 50
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO FIRST NUMBER simple_stitch CLUSTER . $end
-   yacc.py: 469:Action : Reduce rule [grouped_stitch -> NUMBER simple_stitch CLUSTER] with [2,<SimpleStitch @ 0x7d12d13c3e00>,'cluster'] and goto state 22
-   yacc.py: 506:Result : <Cluster @ 0x7d12d092c3b0> (<nodes.Cluster object at 0x7d12d092c3b0>)
+   yacc.py: 469:Action : Reduce rule [grouped_stitch -> NUMBER simple_stitch CLUSTER] with [2,<SimpleStitch @ 0x7c8a8e267d70>,'cluster'] and goto state 22
+   yacc.py: 506:Result : <Cluster @ 0x7c8a8d810590> (<nodes.Cluster object at 0x7c8a8d810590>)
    yacc.py: 410:
    yacc.py: 411:State  : 22
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO FIRST grouped_stitch . $end
-   yacc.py: 469:Action : Reduce rule [stitch_type -> grouped_stitch] with [<Cluster @ 0x7d12d092c3b0>] and goto state 74
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c560> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [stitch_type -> grouped_stitch] with [<Cluster @ 0x7c8a8d810590>] and goto state 74
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8108c0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 74
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO FIRST stitch_type . $end
-   yacc.py: 469:Action : Reduce rule [destination -> FIRST stitch_type] with ['first',<StitchGroup @ 0x7d12d092c560>] and goto state 58
-   yacc.py: 506:Result : <Destination @ 0x7d12d092c590> (<nodes.Destination object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [destination -> FIRST stitch_type] with ['first',<StitchGroup @ 0x7c8a8d8108c0>] and goto state 58
+   yacc.py: 506:Result : <Destination @ 0x7c8a8d810860> (<nodes.Destination object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 58
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA stitch_type INTO destination . $end
-   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7d12d092c440>,'to',<Destination @ 0x7d12d092c590>] and goto state 15
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c440> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [expression -> stitch_type INTO destination] with [<StitchGroup @ 0x7c8a8d8107d0>,'to',<Destination @ 0x7c8a8d810860>] and goto state 15
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8107d0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 15
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA expression . $end
-   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7d12d092c440>] and goto state 52
-   yacc.py: 506:Result : <StitchGroup @ 0x7d12d092c440> (<nodes.StitchGroup object at 0x7d12d092c ...)
+   yacc.py: 469:Action : Reduce rule [aliasable_expression -> expression] with [<StitchGroup @ 0x7c8a8d8107d0>] and goto state 52
+   yacc.py: 506:Result : <StitchGroup @ 0x7c8a8d8107d0> (<nodes.StitchGroup object at 0x7c8a8d810 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 52
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions COMMA aliasable_expression . $end
-   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7d12d08ebe90>,',',<StitchGroup @ 0x7d12d092c440>] and goto state 13
-   yacc.py: 506:Result : <Expressions @ 0x7d12d08ebe90> (<nodes.Expressions object at 0x7d12d08eb ...)
+   yacc.py: 469:Action : Reduce rule [expressions -> expressions COMMA aliasable_expression] with [<Expressions @ 0x7c8a8d812ae0>,',',<StitchGroup @ 0x7c8a8d8107d0>] and goto state 13
+   yacc.py: 506:Result : <Expressions @ 0x7c8a8d812ae0> (<nodes.Expressions object at 0x7c8a8d812 ...)
    yacc.py: 410:
    yacc.py: 411:State  : 13
    yacc.py: 434:Stack  : declarations rounds ROUND NUMBER COLON expressions . $end
-   yacc.py: 469:Action : Reduce rule [round -> ROUND NUMBER COLON expressions] with ['round',3,':',<Expressions @ 0x7d12d08ebe90>] and goto state 9
-   yacc.py: 506:Result : <Round @ 0x7d12d092c0e0> (<nodes.Round object at 0x7d12d092c0e0>)
+   yacc.py: 469:Action : Reduce rule [round -> ROUND NUMBER COLON expressions] with ['round',3,':',<Expressions @ 0x7c8a8d812ae0>] and goto state 9
+   yacc.py: 506:Result : <Round @ 0x7c8a8d810470> (<nodes.Round object at 0x7c8a8d810470>)
    yacc.py: 410:
    yacc.py: 411:State  : 9
    yacc.py: 434:Stack  : declarations rounds round . $end
-   yacc.py: 469:Action : Reduce rule [rounds -> rounds round] with [<Rounds @ 0x7d12d15fc710>,<Round @ 0x7d12d092c0e0>] and goto state 5
-   yacc.py: 506:Result : <Rounds @ 0x7d12d15fc710> (<nodes.Rounds object at 0x7d12d15fc710>)
+   yacc.py: 469:Action : Reduce rule [rounds -> rounds round] with [<Rounds @ 0x7c8a8d810230>,<Round @ 0x7c8a8d810470>] and goto state 5
+   yacc.py: 506:Result : <Rounds @ 0x7c8a8d810230> (<nodes.Rounds object at 0x7c8a8d810230>)
    yacc.py: 410:
    yacc.py: 411:State  : 5
    yacc.py: 434:Stack  : declarations rounds . $end
-   yacc.py: 469:Action : Reduce rule [all -> declarations rounds] with [None,<Rounds @ 0x7d12d15fc710>] and goto state 1
-   yacc.py: 506:Result : <All @ 0x7d12d08ebe60> (<nodes.All object at 0x7d12d08ebe60>)
+   yacc.py: 469:Action : Reduce rule [all -> declarations rounds] with [None,<Rounds @ 0x7c8a8d810230>] and goto state 1
+   yacc.py: 506:Result : <All @ 0x7c8a8d8100e0> (<nodes.All object at 0x7c8a8d8100e0>)
    yacc.py: 410:
    yacc.py: 411:State  : 1
    yacc.py: 434:Stack  : all . $end
-   yacc.py: 571:Done   : Returning <All @ 0x7d12d08ebe60> (<nodes.All object at 0x7d12d08ebe60>)
+   yacc.py: 571:Done   : Returning <All @ 0x7c8a8d8100e0> (<nodes.All object at 0x7c8a8d8100e0>)
    yacc.py: 572:PLY: PARSE DEBUG END

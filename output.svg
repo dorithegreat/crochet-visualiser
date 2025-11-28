@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="300" height="300" viewBox="-150.0 -150.0 300 300">
+     width="500" height="500" viewBox="-250.0 -250.0 500 500">
 <defs>
+<g id="d0">
+<path d="M0,0 L0,-30" stroke-width="2" stroke="black" />
+<path d="M-10,-30 L10,-30" stroke-width="2" stroke="black" />
+</g>
 </defs>
-<rect x="-150.0" y="-150.0" width="300" height="300" fill="white" />
+<rect x="-250.0" y="-250.0" width="500" height="500" fill="white" />
 <ellipse cx="40.0" cy="0.0" rx="10" ry="4" fill="none" stroke="black" transform="rotate(90.0,40.0,0.0)" />
 <ellipse cx="30.64177772475912" cy="25.71150438746157" rx="10" ry="4" fill="none" stroke="black" transform="rotate(130.0,30.64177772475912,25.71150438746157)" />
 <ellipse cx="6.945927106677217" cy="39.39231012048832" rx="10" ry="4" fill="none" stroke="black" transform="rotate(170.0,6.945927106677217,39.39231012048832)" />
@@ -13,4 +17,21 @@
 <ellipse cx="-20.000000000000018" cy="-34.641016151377535" rx="10" ry="4" fill="none" stroke="black" transform="rotate(330.0,-20.000000000000018,-34.641016151377535)" />
 <ellipse cx="6.945927106677199" cy="-39.392310120488325" rx="10" ry="4" fill="none" stroke="black" transform="rotate(370.0,6.945927106677199,-39.392310120488325)" />
 <ellipse cx="30.641777724759113" cy="-25.711504387461584" rx="6.0" ry="2.4" fill="black" stroke="black" transform="rotate(410.0,30.641777724759113,-25.711504387461584)" />
+<ellipse cx="43.664533257781734" cy="-36.63889375213276" rx="10" ry="4" fill="none" stroke="black" transform="rotate(-40.00000000000002,43.664533257781734,-36.63889375213276)" />
+<ellipse cx="62.049599892637204" cy="-52.06579638460971" rx="10" ry="4" fill="none" stroke="black" transform="rotate(-40.00000000000002,62.049599892637204,-52.06579638460971)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(57.89796170952646, -15.742491222236962) rotate(74.78897565411482, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(59.515132372456634, 7.612425282980728) rotate(97.28897565411475, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(52.07166363769877, 29.808419045671638) rotate(119.78897565411467, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(36.7007561449073, 47.466351222650864) rotate(142.288975654115, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(15.742491222236861, 57.897961709526484) rotate(164.78897565411492, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(-7.612425282980829, 59.51513237245662) rotate(187.28897565411484, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(-29.808419045671727, 52.07166363769872) rotate(209.78897565411478, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(-47.466351222650665, 36.70075614490756) rotate(232.2889756541147, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(-57.8979617095264, 15.742491222237176) rotate(254.7889756541146, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(-59.51513237245661, -7.612425282980933) rotate(-82.71102434588508, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(-52.07166363769867, -29.808419045671815) rotate(-60.211024345885136, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(-36.70075614490747, -47.46635122265072) rotate(-37.71102434588522, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(-15.742491222237074, -57.897961709526435) rotate(-15.211024345885292, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(7.612425282981034, -59.5151323724566) rotate(7.288975654115035, 0, 0)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(29.808419045671908, -52.07166363769861) rotate(29.788975654114957, 0, 0)" />
 </svg>

@@ -10,9 +10,20 @@ class Stitch:
         self.previous = previous
         self.alias = None
 
+        # used only in visualization
+        self.bottom_position = None
+        self.top_position = None
+
     def counts_as(self, stitch_type):
-        if self.type == stitch_type:
+        if stitch_type == nd.SimpleStitch.STITCH:
             return True
+        elif type(self.type) == tuple:
+            if type(stitch_type) == nd.Cluster and self.type[0] == ComplexStitch.CLUSTER:
+                return True
+            elif type(stitch_type) == nd.Decrease and self.type[0] == ComplexStitch.DECREASE:
+                return True
+            elif type(stitch_type) == nd.Increase and self.type[0] == ComplexStitch.INCREASE:
+                return True
         elif type(stitch_type) == nd.SimpleStitch and self.type == translate_enum(stitch_type):
             return True
         elif self.alias == stitch_type:
@@ -165,16 +176,26 @@ class Preprocessor:
                     # skipping to the next stitch of a specific type
                     while self.previous_round_index < len(self.flattened[-1]) and not self.flattened[-1][self.previous_round_index].counts_as(stitch_group.destination.stitch.stitch):
                         self.previous_round_index += 1
-                            
-                    # TODO implement other destination types
-                
-                # if this is the first round
-                if not self.flattened:
-                    # TODO figure this out
-                    pass
-                
-                elif self.previous_round_index < len(self.flattened[-1]):
+                        
                     anchors.append(self.flattened[-1][self.previous_round_index])
+                
+                elif stitch_group.destination.type == nd.DestinationType.FIRST:
+                    index = 0
+                    while index < len(self.current_expressions) and not self.current_expressions[index].counts_as(stitch_group.destination.stitch.stitch):
+                        index += 1
+                    
+                    if index >= len(self.current_expressions):
+                        raise Exception("No valid destination of the specified type found in this round")
+                    else:
+                        anchors.append(self.current_expressions[index])
+                
+                elif stitch_group.destination.type == nd.DestinationType.RING:
+                    # if this is specifically the second round
+                    if len(self.flattened) == 1:
+                        anchors.append(self.flattened[0][0])
+                    else:
+                        raise Exception("You can only use ring as anchor in the second round")
+
             
             new_stitch.anchors = anchors
             self.current_expressions.append(new_stitch)

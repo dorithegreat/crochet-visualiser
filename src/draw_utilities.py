@@ -2,6 +2,18 @@
 import math
 import drawsvg as draw
 
+
+
+def angle_from_origin(point):
+    """
+    Returns the angle (in degrees) between the positive x-axis
+    and the vector from (0,0) to (x,y).
+    """
+    x, y = point
+    if x == 0 and y == 0:
+        raise ValueError("Angle is undefined for point (0,0).")
+    return math.degrees(math.atan2(y, x))
+
 # ---------- Internal utility functions ----------
 def bezier_point(P0, P1, P2, P3, t):
     u = 1 - t
@@ -132,7 +144,7 @@ def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30):
     samples = sample_bezier_by_arclength(P0_local, P1_local, P2_local, P3_local, n_samples=n_ellipses)
     # ellipse shape
     shape = draw.Group()
-    shape.append(draw.Ellipse(0, 0, 10, 4, stroke='black', fill='none', stroke_width=1))
+    shape.append(draw.Ellipse(0, 0, 12, 5, stroke='black', fill='none', stroke_width=1))
     for t_local, (lx,ly), (dx_local,dy_local) in samples:
         wx, wy = to_world(lx, ly)
         dxw = dx_local * cosA - dy_local * sinA
@@ -212,3 +224,40 @@ def draw_base_chain(drawing, n, radius=40, a=10, b=4, target_angle_deg=-45):
         transform=f'rotate({shaded_rot},{sx},{sy})'
     )
     drawing.append(shaded)
+
+    return (sx, sy)
+
+def draw_starting_chain(drawing, n, start, rx = 10, ry = 4, spacing = 24, 
+            stroke='black', fill='none'):
+    """
+    Add n ellipses of radii (rx, ry) to an existing drawsvg.Drawing.
+    Ellipses are placed in a line starting at start=(x,y) and oriented
+    directly away from (0,0). `spacing` = distance between ellipse centers.
+    """
+    x, y = start
+
+    # Unit direction vector away from the origin
+    L = math.hypot(x, y)
+    if L == 0:
+        raise ValueError("start must not be (0,0)")
+    ux, uy = x / L, y / L
+
+    # Angle comes from the helper function
+    angle_deg = angle_from_origin((x, y))
+
+    first_cx = x + (0.5 * spacing + 5) * ux
+    first_cy = y + (0.5 * spacing + 5) * uy
+
+    centers = [
+        (first_cx + i * spacing * ux, first_cy + i * spacing * uy)
+        for i in range(n)
+    ]
+
+    # Draw ellipses
+    for cx, cy in centers:
+        e = draw.Ellipse(
+            cx, cy, rx, ry,
+            fill=fill, stroke=stroke,
+            transform=f'rotate({angle_deg},{cx},{cy})'
+        )
+        drawing.append(e)
