@@ -9,6 +9,7 @@ class Stitch:
         self.type = type
         self.previous = previous
         self.alias = None
+        self.dependent = []
 
         # used only in visualization
         self.bottom_position = None
@@ -17,6 +18,8 @@ class Stitch:
     def counts_as(self, stitch_type):
         if stitch_type == nd.SimpleStitch.STITCH:
             return True
+        elif self.alias == stitch_type:
+            return True
         elif type(self.type) == tuple:
             if type(stitch_type) == nd.Cluster and self.type[0] == ComplexStitch.CLUSTER:
                 return True
@@ -24,11 +27,9 @@ class Stitch:
                 return True
             elif type(stitch_type) == nd.Increase and self.type[0] == ComplexStitch.INCREASE:
                 return True
+            elif stitch_type == nd.SimpleStitch.CH and self.type[0] == ComplexStitch.CH_SPACE:
+                return True
         elif type(stitch_type) == nd.SimpleStitch and self.type == translate_enum(stitch_type):
-            return True
-        elif self.alias == stitch_type:
-            return True
-        elif type(stitch_type) == nd.SimpleStitch and self.alias == translate_enum(stitch_type):
             return True
         else:
             return False
@@ -123,11 +124,11 @@ class Preprocessor:
             if type(stitch_group.stitch) == nd.SimpleStitch:
                 new_stitch = Stitch(translate_enum(stitch_group.stitch))
             elif type(stitch_group.stitch) == nd.Increase:
-                new_stitch = Stitch((ComplexStitch.INCREASE, stitch_group.number))
+                new_stitch = Stitch((ComplexStitch.INCREASE, stitch_group.number, translate_enum(stitch_group.stitch.stitch)))
             elif type(stitch_group.stitch) == nd.Decrease:
-                new_stitch = Stitch((ComplexStitch.DECREASE, stitch_group.number))
+                new_stitch = Stitch((ComplexStitch.DECREASE, stitch_group.number, translate_enum(stitch_group.stitch.stitch)))
             elif type(stitch_group.stitch) == nd.Cluster:
-                new_stitch = Stitch((ComplexStitch.CLUSTER, stitch_group.number))
+                new_stitch = Stitch((ComplexStitch.CLUSTER, stitch_group.stitch.number, translate_enum(stitch_group.stitch.stitch)))
                 
             #* --- Setting the previous stitch --- 
                 
@@ -188,6 +189,15 @@ class Preprocessor:
                         raise Exception("No valid destination of the specified type found in this round")
                     else:
                         anchors.append(self.current_expressions[index])
+
+                elif stitch_group.destination.type == nd.DestinationType.SAME:
+                    
+                    # skip chains, which don't have anchors
+                    previous = new_stitch.previous
+                    while type(previous.type) == tuple and previous.type[0] == ComplexStitch.CH_SPACE:
+                        previous = previous.previous
+                    
+                    anchors.append(previous.anchors[-1])
                 
                 elif stitch_group.destination.type == nd.DestinationType.RING:
                     # if this is specifically the second round
@@ -196,9 +206,14 @@ class Preprocessor:
                     else:
                         raise Exception("You can only use ring as anchor in the second round")
 
+            for stitch in anchors:
+                stitch.dependent.append(new_stitch)
             
             new_stitch.anchors = anchors
             self.current_expressions.append(new_stitch)
+        
+        if type(stitch_group.destination) == nd.Destination and stitch_group.destination.type == nd.DestinationType.NEXT:
+            self.previous_round_index += 1
 
     def process_loop(self, loop : nd.Loop):
         if loop.number is not None:
@@ -220,6 +235,7 @@ class Preprocessor:
         while counter < skip.number:
             while not self.flattened[-1][self.previous_round_index].counts_as(skip.stitch.stitch):
                 self.previous_round_index += 1 # annoyingly no ++ in python
+            self.previous_round_index += 1
             counter += 1
     
     

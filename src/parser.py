@@ -241,7 +241,7 @@ def p_expressions_single(p):
 
 def p_aliasable_expressions_counts_as(p):
     '''aliasable_expression : expression '(' COUNTS_AS alias ')' '''
-    p[0] = nd.CountsAs(p[1], p[5])
+    p[0] = nd.CountsAs(p[1], p[4])
 
 def p_aliasable_expression_to_make(p):
     'aliasable_expression : expression TO_MAKE alias'

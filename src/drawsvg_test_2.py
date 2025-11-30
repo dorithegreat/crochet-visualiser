@@ -1,6 +1,6 @@
 import drawsvg as draw
 import math
-from draw_utilities import draw_chain, draw_base_chain, draw_starting_chain
+from draw_utilities import draw_chain, draw_base_chain, draw_starting_chain, draw_cluster_lines
 
 d = draw.Drawing(500, 500, origin='center')
 d.append(draw.Rectangle(-250, -250, 500, 500, fill='white'))
@@ -58,4 +58,7 @@ draw_base_chain(d, 10, 50, 12, 5)
 
 draw_starting_chain(d, n=5, start=(100, 120))
 
+draw_cluster_lines(d, (0, 0), (0, -50), 5, 1, 0.8)
+
+# d = draw.Drawing(200, 200)
 d.save_svg("test2.svg")

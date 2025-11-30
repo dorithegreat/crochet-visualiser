@@ -48,16 +48,16 @@
 <use xlink:href="#d1" x="0" y="0" transform="translate(36.35492607468355, -87.76855558857223) rotate(382.5, 0, 0)" />
 <use xlink:href="#d1" x="0" y="0" transform="translate(67.175144212722, -67.17514421272203) rotate(405.0, 0, 0)" />
 <use xlink:href="#d1" x="0" y="0" transform="translate(87.76855558857221, -36.35492607468359) rotate(427.5, 0, 0)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(-100.0,110.0) rotate(60.00000008831649)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(-84.13129502553075,132.75517275890914) rotate(49.91014243856854)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(-64.20490620176597,152.03475767900403) rotate(37.85823521843105)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(-40.451300337373766,166.30017003312955) rotate(23.797997437862865)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(-13.84208429508297,173.96526923786396) rotate(8.140352136870858)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(13.842084295083737,173.96526923786385) rotate(-8.140352136871309)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(40.45130033737439,166.3001700331293) rotate(-23.797997437863234)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(64.20490620176633,152.03475767900375) rotate(-37.85823521843127)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(84.13129502553079,132.75517275890908) rotate(-49.91014243856857)" />
-<use xlink:href="#d2" x="0" y="0" transform="translate(100.0,110.0) rotate(-60.00000008831649)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-87.31618266160964,128.83579048747254) rotate(51.88448729982254)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-71.91897017816974,145.5179832540549) rotate(42.478016605076625)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-53.84385600761336,159.24016920693361) rotate(31.704736792926525)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-33.41571037676627,169.10508745679354) rotate(19.654749369016503)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(-11.337958236132522,174.2906952548114) rotate(6.6676889490510804)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(11.33795823613329,174.29069525481134) rotate(-6.667688949051532)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(33.415710376766924,169.1050874567933) rotate(-19.654749369016894)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(53.843856007613766,159.24016920693333) rotate(-31.70473679292676)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(71.91897017816999,145.51798325405468) rotate(-42.47801660507677)" />
+<use xlink:href="#d2" x="0" y="0" transform="translate(87.3161826616097,128.83579048747245) rotate(-51.884487299822574)" />
 <ellipse cx="50.0" cy="0.0" rx="12" ry="5" fill="none" stroke="black" transform="rotate(90.0,50.0,0.0)" />
 <ellipse cx="42.06267664155906" cy="27.032040872779877" rx="12" ry="5" fill="none" stroke="black" transform="rotate(122.72727272727273,42.06267664155906,27.032040872779877)" />
 <ellipse cx="20.77075065009432" cy="45.48159976772592" rx="12" ry="5" fill="none" stroke="black" transform="rotate(155.45454545454547,20.77075065009432,45.48159976772592)" />
@@ -69,9 +69,19 @@
 <ellipse cx="-7.1157419136642615" cy="-49.491072094046636" rx="12" ry="5" fill="none" stroke="black" transform="rotate(351.8181818181818,-7.1157419136642615,-49.491072094046636)" />
 <ellipse cx="20.770750650094303" cy="-45.481599767725925" rx="12" ry="5" fill="none" stroke="black" transform="rotate(384.5454545454545,20.770750650094303,-45.481599767725925)" />
 <ellipse cx="42.06267664155906" cy="-27.032040872779874" rx="7.199999999999999" ry="3.0" fill="black" stroke="black" transform="rotate(417.2727272727273,42.06267664155906,-27.032040872779874)" />
-<ellipse cx="100.0" cy="120.0" rx="12" ry="5" fill="none" stroke="black" transform="rotate(50.19442890773481,100.0,120.0)" />
-<ellipse cx="117.92516319060545" cy="141.51019582872652" rx="12" ry="5" fill="none" stroke="black" transform="rotate(50.19442890773481,117.92516319060545,141.51019582872652)" />
-<ellipse cx="135.8503263812109" cy="163.02039165745305" rx="12" ry="5" fill="none" stroke="black" transform="rotate(50.19442890773481,135.8503263812109,163.02039165745305)" />
-<ellipse cx="153.7754895718163" cy="184.53058748617957" rx="12" ry="5" fill="none" stroke="black" transform="rotate(50.19442890773481,153.7754895718163,184.53058748617957)" />
-<ellipse cx="171.70065276242175" cy="206.0407833149061" rx="12" ry="5" fill="none" stroke="black" transform="rotate(50.19442890773481,171.70065276242175,206.0407833149061)" />
+<ellipse cx="109.28267379513495" cy="131.13920855416194" rx="8" ry="4" fill="none" stroke="black" transform="rotate(50.19442890773481,109.28267379513495,131.13920855416194)" />
+<ellipse cx="121.44617738876008" cy="145.7354128665121" rx="8" ry="4" fill="none" stroke="black" transform="rotate(50.19442890773481,121.44617738876008,145.7354128665121)" />
+<ellipse cx="133.60968098238519" cy="160.33161717886222" rx="8" ry="4" fill="none" stroke="black" transform="rotate(50.19442890773481,133.60968098238519,160.33161717886222)" />
+<ellipse cx="145.7731845760103" cy="174.92782149121237" rx="8" ry="4" fill="none" stroke="black" transform="rotate(50.19442890773481,145.7731845760103,174.92782149121237)" />
+<ellipse cx="157.93668816963543" cy="189.5240258035625" rx="8" ry="4" fill="none" stroke="black" transform="rotate(50.19442890773481,157.93668816963543,189.5240258035625)" />
+<path d="M0,0 Q-40.0,-25.0,0,-50" stroke="black" fill="none" stroke-width="2" />
+<path d="M-23.75,-25.0 L-16.25,-25.0" stroke="black" fill="none" stroke-width="2" />
+<path d="M0,0 Q-20.0,-25.0,0,-50" stroke="black" fill="none" stroke-width="2" />
+<path d="M-13.75,-25.0 L-6.25,-25.0" stroke="black" fill="none" stroke-width="2" />
+<path d="M0,0 Q0.0,-25.0,0,-50" stroke="black" fill="none" stroke-width="2" />
+<path d="M-3.75,-25.0 L3.75,-25.0" stroke="black" fill="none" stroke-width="2" />
+<path d="M0,0 Q20.0,-25.0,0,-50" stroke="black" fill="none" stroke-width="2" />
+<path d="M6.25,-25.0 L13.75,-25.0" stroke="black" fill="none" stroke-width="2" />
+<path d="M0,0 Q40.0,-25.0,0,-50" stroke="black" fill="none" stroke-width="2" />
+<path d="M16.25,-25.0 L23.75,-25.0" stroke="black" fill="none" stroke-width="2" />
 </svg>

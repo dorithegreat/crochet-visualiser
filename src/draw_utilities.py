@@ -141,7 +141,11 @@ def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30):
     P2_local = (0.75*c, h)
     P3_local = (c, 0.0)
     # sample points along arc-length
-    samples = sample_bezier_by_arclength(P0_local, P1_local, P2_local, P3_local, n_samples=n_ellipses)
+    samples = sample_bezier_by_arclength(
+        P0_local, P1_local, P2_local, P3_local,
+        n_samples=n_ellipses + 2   # <-- add two extra so trimmed list still has n_ellipses
+    )
+    samples = samples[1:-1] 
     # ellipse shape
     shape = draw.Group()
     shape.append(draw.Ellipse(0, 0, 12, 5, stroke='black', fill='none', stroke_width=1))
@@ -227,7 +231,7 @@ def draw_base_chain(drawing, n, radius=40, a=10, b=4, target_angle_deg=-45):
 
     return (sx, sy)
 
-def draw_starting_chain(drawing, n, start, rx = 10, ry = 4, spacing = 24, 
+def draw_starting_chain(drawing, n, start, rx = 8, ry = 4, spacing = 19, 
             stroke='black', fill='none'):
     """
     Add n ellipses of radii (rx, ry) to an existing drawsvg.Drawing.
@@ -261,3 +265,76 @@ def draw_starting_chain(drawing, n, start, rx = 10, ry = 4, spacing = 24,
             transform=f'rotate({angle_deg},{cx},{cy})'
         )
         drawing.append(e)
+
+
+def draw_cluster_lines(d, P0, P1, n_lines=3, n_strikes=1,
+                    curve_factor=0.25,
+                    stroke='black', stroke_width=2):
+
+    x0, y0 = P0
+    x1, y1 = P1
+
+    # Direction vector
+    dx = x1 - x0
+    dy = y1 - y0
+    L = math.hypot(dx, dy)
+
+    # Unit direction
+    ux = dx / L
+    uy = dy / L
+
+    # Perpendicular (for lateral offsets)
+    px = -uy
+    py = ux
+
+    # Symmetric offsets
+    mid = (n_lines - 1) / 2
+    offsets = [(i - mid) for i in range(n_lines)]
+    if n_lines > 1:
+        m = max(abs(o) for o in offsets)
+        offsets = [o / m for o in offsets]
+    else:
+        offsets = [0]
+
+    for off in offsets:
+        lateral = off * curve_factor * L
+
+        # Control point (midpoint + lateral offset)
+        cx = (x0 + x1)/2 + px * lateral
+        cy = (y0 + y1)/2 + py * lateral
+
+        # Draw the curve
+        p = draw.Path(stroke=stroke, fill='none', stroke_width=stroke_width)
+        p.M(x0, y0)
+        p.Q(cx, cy, x1, y1)
+        d.append(p)
+
+        # -------- FIX: strikes must follow each curved line, not the center line --------
+        def bezier_point(t):
+            # Quadratic Bézier interpolation
+            x = (1-t)**2 * x0 + 2*(1-t)*t * cx + t**2 * x1
+            y = (1-t)**2 * y0 + 2*(1-t)*t * cy + t**2 * y1
+            return x, y
+        # -------------------------------------------------------------------------------
+
+        spacing = 1/(n_strikes+1)
+        for k in range(n_strikes):
+            t = (k+1)*spacing
+
+            # Corrected: get the actual curve point
+            bx, by = bezier_point(t)
+
+            # Strike length
+            sl = 0.15 * L
+
+            # Strike endpoints (perpendicular)
+            sx1 = bx - px * sl/2
+            sy1 = by - py * sl/2
+            sx2 = bx + px * sl/2
+            sy2 = by + py * sl/2
+
+            strike = draw.Path(stroke=stroke, fill='none', stroke_width=stroke_width)
+            strike.M(sx1, sy1)
+            strike.L(sx2, sy2)
+            d.append(strike)
+
