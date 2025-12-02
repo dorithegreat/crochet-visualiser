@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="500" height="500" viewBox="-250.0 -250.0 500 500">
+     width="600" height="600" viewBox="-300.0 -300.0 600 600">
 <defs>
 <g id="d0">
 <path d="M0,0 L0,-30" stroke-width="2" stroke="black" />
@@ -28,10 +28,39 @@
 <ellipse cx="0" cy="0" rx="12" ry="5" stroke="black" fill="none" stroke-width="1" />
 </g>
 <g id="d8">
+<ellipse cx="0" cy="-5" rx="6" ry="3" stroke-width="2" stroke="black" fill="black" />
+</g>
+<g id="d9">
+<ellipse cx="0" cy="0" rx="12" ry="5" stroke="black" fill="none" stroke-width="1" />
+</g>
+<g id="d10">
+<path d="M0,0 L0,-50" stroke-width="2" stroke="black" />
+<path d="M-10,-50 L10,-50" stroke-width="2" stroke="black" />
+<path d="M-7,-35 L7,-29" stroke-width="2" stroke="black" />
+</g>
+<g id="d11">
+<ellipse cx="0" cy="0" rx="12" ry="5" stroke="black" fill="none" stroke-width="1" />
+</g>
+<g id="d12">
+<ellipse cx="0" cy="0" rx="12" ry="5" stroke="black" fill="none" stroke-width="1" />
+</g>
+<g id="d13">
+<ellipse cx="0" cy="0" rx="12" ry="5" stroke="black" fill="none" stroke-width="1" />
+</g>
+<g id="d14">
+<ellipse cx="0" cy="0" rx="12" ry="5" stroke="black" fill="none" stroke-width="1" />
+</g>
+<g id="d15">
+<ellipse cx="0" cy="0" rx="12" ry="5" stroke="black" fill="none" stroke-width="1" />
+</g>
+<g id="d16">
+<ellipse cx="0" cy="0" rx="12" ry="5" stroke="black" fill="none" stroke-width="1" />
+</g>
+<g id="d17">
 <ellipse cx="0" cy="0" rx="12" ry="5" stroke="black" fill="none" stroke-width="1" />
 </g>
 </defs>
-<rect x="-250.0" y="-250.0" width="500" height="500" fill="white" />
+<rect x="-300.0" y="-300.0" width="600" height="600" fill="white" />
 <ellipse cx="40.0" cy="0.0" rx="10" ry="4" fill="none" stroke="black" transform="rotate(90.0,40.0,0.0)" />
 <ellipse cx="30.64177772475912" cy="25.71150438746157" rx="10" ry="4" fill="none" stroke="black" transform="rotate(130.0,30.64177772475912,25.71150438746157)" />
 <ellipse cx="6.945927106677217" cy="39.39231012048832" rx="10" ry="4" fill="none" stroke="black" transform="rotate(170.0,6.945927106677217,39.39231012048832)" />
@@ -231,10 +260,76 @@
 <use xlink:href="#d7" x="0" y="0" transform="translate(161.83464566639145,84.24578417164031) rotate(-62.50000000000011)" />
 <use xlink:href="#d7" x="0" y="0" transform="translate(165.05206162680042,58.26819145280187) rotate(-100.29776003642573)" />
 <use xlink:href="#d7" x="0" y="0" transform="translate(155.33350464589677,33.5814399207252) rotate(-120.4684266657345)" />
-<use xlink:href="#d8" x="0" y="0" transform="translate(158.80499552350258,-6.097882378866416) rotate(-49.53157333426568)" />
-<use xlink:href="#d8" x="0" y="0" transform="translate(172.6627152024487,-28.721976975055295) rotate(-69.70223996357444)" />
-<use xlink:href="#d8" x="0" y="0" transform="translate(174.00514065577266,-54.86361010748237) rotate(-107.50000000000011)" />
-<use xlink:href="#d8" x="0" y="0" transform="translate(157.9112653288827,-75.50759872137833) rotate(-145.29776003642573)" />
-<use xlink:href="#d8" x="0" y="0" transform="translate(133.58303837053904,-86.09171059063229) rotate(-165.46842666573448)" />
-<ellipse cx="107.24622203665689" cy="107.24622203665689" rx="6" ry="3" fill="black" stroke="black" />
+<use xlink:href="#d8" x="0" y="0" transform="translate(107.24622203665689, -89.99026535611554) rotate(180, 0, 0)" />
+<use xlink:href="#d9" x="0" y="0" transform="translate(159.48307412028998,-5.373010507837119) rotate(-46.441284467856796)" />
+<use xlink:href="#d9" x="0" y="0" transform="translate(174.92437247092874,-26.975704996796832) rotate(-64.90719524351147)" />
+<use xlink:href="#d9" x="0" y="0" transform="translate(177.54968794621425,-52.83461163666226) rotate(-109.26446948529745)" />
+<use xlink:href="#d9" x="0" y="0" transform="translate(159.38815302931425,-71.42853492940174) rotate(-153.6217437270837)" />
+<use xlink:href="#d9" x="0" y="0" transform="translate(133.85199267318296,-78.70964873174881) rotate(-172.08765450273847)" />
+<use xlink:href="#d8" x="0" y="0" transform="translate(108.22892896076182, -102.25542794755039) rotate(92.22935360574225, 0, 0)" />
+<use xlink:href="#d8" x="0" y="0" transform="translate(108.12272944625832, -114.557647064433) rotate(86.55698539105722, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(97.76983279950663, -149.5471832856482) rotate(55.75324374530713, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(89.42180946784995, -158.52124854682947) rotate(37.69234917288483, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(78.56276200374684, -164.174110857019) rotate(17.307650827114884, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(66.42340862632038, -165.86509886282767) rotate(359.2467562546926, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-33.34033982421281, -174.1328057159536) rotate(14.902150667102859, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-47.74883154467563, -175.44704049287844) rotate(354.49265439133296, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-61.51873528201144, -171.10540652151622) rotate(330.5073456086667, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-72.56766663007234, -161.7644770831059) rotate(310.097849332897, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-80.35846745722675, -149.52612784638396) rotate(295.776449553931, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-146.70566812555518, -99.55530737202561) rotate(329.9021506671029, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-157.8233146505994, -90.29626949265086) rotate(309.49265439133296, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-164.49010813697544, -77.48947836111462) rotate(285.5073456086667, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-165.69784786956893, -63.071669531551166) rotate(265.09784933289694, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-162.55295622950828, -48.90892169998122) rotate(250.77644955393097, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-174.13280571595362, 33.34033982421279) rotate(284.9021506671029, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-175.44704049287844, 47.74883154467561) rotate(264.492654391333, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-171.10540652151624, 61.518735282011434) rotate(240.5073456086667, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-161.76447708310593, 72.56766663007232) rotate(220.097849332897, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-149.526127846384, 80.35846745722672) rotate(205.77644955393097, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-99.55530737202567, 146.70566812555515) rotate(239.90215066710292, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-90.29626949265094, 157.8233146505994) rotate(219.49265439133305, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-77.48947836111469, 164.49010813697544) rotate(195.50734560866672, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-63.07166953155124, 165.69784786956893) rotate(175.097849332897, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(-48.908921699981306, 162.5529562295083) rotate(160.776449553931, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(33.340339824212705, 174.13280571595362) rotate(194.90215066710292, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(47.74883154467554, 175.44704049287847) rotate(174.49265439133302, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(61.51873528201136, 171.10540652151624) rotate(150.50734560866672, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(72.56766663007227, 161.76447708310596) rotate(130.097849332897, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(80.35846745722668, 149.52612784638401) rotate(115.776449553931, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(146.70566812555512, 99.55530737202571) rotate(149.90215066710292, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(157.82331465059934, 90.29626949265096) rotate(129.49265439133305, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(164.49010813697538, 77.48947836111472) rotate(105.50734560866672, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(165.69784786956893, 63.07166953155127) rotate(85.097849332897, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(162.55295622950825, 48.90892169998132) rotate(70.77644955393102, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(176.77384622603518, -31.45558595261902) rotate(109.60984057664875, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(178.98950147121928, -45.72826263970498) rotate(86.13331319897199, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(174.2494302087655, -59.290737248804035) rotate(55.33774783043313, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(163.62554649685373, -69.07600795815972) rotate(31.86122045275627, 0, 0)" />
+<use xlink:href="#d10" x="0" y="0" transform="translate(150.39860921052434, -75.04063258888317) rotate(17.87103347748871, 0, 0)" />
+<ellipse cx="128.48641182069787" cy="-125.2809336454697" rx="8" ry="4" fill="none" stroke="black" transform="rotate(-44.27630324816529,128.48641182069787,-125.2809336454697)" />
+<ellipse cx="142.0900608433375" cy="-138.54519891983884" rx="8" ry="4" fill="none" stroke="black" transform="rotate(-44.27630324816529,142.0900608433375,-138.54519891983884)" />
+<ellipse cx="155.69370986597716" cy="-151.809464194208" rx="8" ry="4" fill="none" stroke="black" transform="rotate(-44.27630324816529,155.69370986597716,-151.809464194208)" />
+<use xlink:href="#d11" x="0" y="0" transform="translate(47.38783557490288,-227.4046229223328) rotate(-151.23509778308497)" />
+<use xlink:href="#d11" x="0" y="0" transform="translate(23.589442326661377,-234.42747933436542) rotate(-175.58851357407536)" />
+<use xlink:href="#d11" x="0" y="0" transform="translate(-1.0045237868054357,-231.1379711353146) rotate(160.05807063493424)" />
+<use xlink:href="#d12" x="0" y="0" transform="translate(-141.23622323121367,-183.48743554076174) rotate(-153.47188802261238)" />
+<use xlink:href="#d12" x="0" y="0" transform="translate(-165.0916613708998,-185.43653892202633) rotate(147.68716471220108)" />
+<use xlink:href="#d12" x="0" y="0" transform="translate(-173.55337267755283,-163.04724740598903) rotate(88.8462174470156)" />
+<use xlink:href="#d13" x="0" y="0" transform="translate(-229.61430112937035,-29.876118737433984) rotate(161.52811197738768)" />
+<use xlink:href="#d13" x="0" y="0" transform="translate(-247.86086742424442,-14.38600087881158) rotate(102.68716471220115)" />
+<use xlink:href="#d13" x="0" y="0" transform="translate(-238.01258101266922,7.428952423518098) rotate(43.8462174470156)" />
+<use xlink:href="#d14" x="0" y="0" transform="translate(-183.48743554076177,141.23622323121364) rotate(116.52811197738768)" />
+<use xlink:href="#d14" x="0" y="0" transform="translate(-185.4365389220264,165.09166137089974) rotate(57.687164712201124)" />
+<use xlink:href="#d14" x="0" y="0" transform="translate(-163.04724740598905,173.55337267755277) rotate(-1.153782552984419)" />
+<use xlink:href="#d15" x="0" y="0" transform="translate(-29.876118737434066,229.6143011293704) rotate(71.52811197738761)" />
+<use xlink:href="#d15" x="0" y="0" transform="translate(-14.386000878811629,247.86086742424445) rotate(12.687164712201055)" />
+<use xlink:href="#d15" x="0" y="0" transform="translate(7.428952423518027,238.01258101266922) rotate(-46.15378255298449)" />
+<use xlink:href="#d16" x="0" y="0" transform="translate(141.2362232312136,183.48743554076185) rotate(26.528111977387674)" />
+<use xlink:href="#d16" x="0" y="0" transform="translate(165.0916613708997,185.43653892202644) rotate(-32.31283528779886)" />
+<use xlink:href="#d16" x="0" y="0" transform="translate(173.55337267755272,163.0472474059891) rotate(-91.1537825529844)" />
+<use xlink:href="#d17" x="0" y="0" transform="translate(229.93354415017234,32.392249658658045) rotate(-11.476596361111595)" />
+<use xlink:href="#d17" x="0" y="0" transform="translate(249.95662677689955,19.465000671364862) rotate(-74.36269486628827)" />
+<use xlink:href="#d17" x="0" y="0" transform="translate(239.5541765283649,-1.9785679001900718) rotate(-137.2487933714648)" />
+<use xlink:href="#d0" x="0" y="0" transform="translate(139.5841254970618, -136.1017816324551) rotate(89.22723272770806, 0, 0)" />
 </svg>

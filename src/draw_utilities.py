@@ -113,7 +113,7 @@ def sample_bezier_by_arclength(P0, P1, P2, P3, n_samples=100, sample_grid=5000):
     return samples
 
 # ---------- Public function ----------
-def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30):
+def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30, dependent = 0):
     """
     Places 'n_ellipses' along an arch between points P0 and P3 in the given drawsvg Drawing.
     
@@ -155,7 +155,22 @@ def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30):
         dyw = dx_local * sinA + dy_local * cosA
         ang = math.degrees(math.atan2(dyw, dxw))
         drawing.append(draw.Use(shape, 0, 0, transform=f"translate({wx},{wy}) rotate({ang})"))
-    return h  # optional return of control height for reference
+
+    samples = sample_bezier_by_arclength(
+        P0_local, P1_local, P2_local, P3_local,
+        n_samples=  dependent + 2   # <-- add two extra so trimmed list still has n_ellipses
+    )
+    samples = samples[1:-1] 
+
+    res = []
+    for t_local, (lx,ly), (dx_local,dy_local) in samples:
+        wx, wy = to_world(lx, ly)
+        dxw = dx_local * cosA - dy_local * sinA
+        dyw = dx_local * sinA + dy_local * cosA
+        ang = math.degrees(math.atan2(dyw, dxw))
+        res.append((wx, wy, ang + 90))
+
+    return res
 
 
 def draw_base_chain(drawing, n, radius=40, a=10, b=4, target_angle_deg=-45):

@@ -18,7 +18,7 @@ class Stitch:
     def counts_as(self, stitch_type):
         if stitch_type == nd.SimpleStitch.STITCH:
             return True
-        elif self.alias == stitch_type:
+        elif type(stitch_type) == nd.SimpleStitch and stitch_type != nd.SimpleStitch.CH and self.alias == translate_enum(stitch_type):
             return True
         elif type(self.type) == tuple:
             if type(stitch_type) == nd.Cluster and self.type[0] == ComplexStitch.CLUSTER:
@@ -29,7 +29,7 @@ class Stitch:
                 return True
             elif stitch_type == nd.SimpleStitch.CH and self.type[0] == ComplexStitch.CH_SPACE:
                 return True
-        elif type(stitch_type) == nd.SimpleStitch and self.type == translate_enum(stitch_type):
+        elif type(stitch_type) == nd.SimpleStitch and stitch_type != nd.SimpleStitch.CH and self.type == translate_enum(stitch_type):
             return True
         else:
             return False
@@ -73,7 +73,7 @@ class Preprocessor:
     def process_round(self, round : nd.Round):
         # global variable so that I don't have to pass it to all the functions
         self.current_expressions = []
-        self.previous_round_index = 0
+        self.previous_round_index = 1
         for expression in round.expressions.expressions:
             self.process_expression(expression)
 

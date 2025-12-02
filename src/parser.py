@@ -336,8 +336,7 @@ def p_simple_stitch_sc(p):
 def p_simple_stitch_dc(p):
     'simple_stitch : DC'
     p[0] = nd.SimpleStitch.DC
-    'simple_stitch : DC'
-    p[0] = nd.SimpleStitch.DC
+
 
 def p_simple_stitch_tr(p):
     'simple_stitch : TR'

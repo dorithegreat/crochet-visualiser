@@ -2,6 +2,7 @@ import drawsvg as draw
 import math
 from draw_utilities import draw_chain, draw_base_chain, draw_starting_chain, angle_from_origin, draw_cluster_lines
 from preprocessor import Stitch, SingularStitch, ComplexStitch
+import nodes as nd
 
 # go through each round one by one
 # split the round into 3 sets: fixed stitches, chain arcs and special cases
@@ -105,12 +106,24 @@ class Visualizer:
         self.half_double_crochet.append(draw.Line(0,0,0,-30, stroke_width = 2, stroke='black'))
         self.half_double_crochet.append(draw.Line(-10, -30, 10, -30, stroke_width = 2, stroke='black'))
 
+        self.slip_stitch = draw.Group()
+        self.slip_stitch.append(draw.Ellipse(0, -5, 6, 3, stroke_width = 2, stroke = 'black', fill = 'black'))
+
 
     def visualize_round(self, round, previous_round):
         # draw starting chain
         if type(round[0].type) is not tuple:
-            raise Exception("what sort of weird round does not start with a chain?")
-        draw_starting_chain(self.drawing,round[0].type[1] ,round[0].previous.top_position)
+            if round[0].type == SingularStitch.SLIP:
+                pass
+            else:
+                raise Exception("what sort of weird round does not start with a chain?")
+        else:
+            draw_starting_chain(self.drawing,round[0].type[1] ,round[0].previous.top_position)
+            radius = math.hypot(round[0].previous.top_position[0], round[0].previous.top_position[1])
+            angle = math.atan2(round[0].previous.top_position[1], round[0].previous.top_position[0])
+            x = (radius + 10 * round[0].type[1]) * math.cos(angle)
+            y = (radius + 10 * round[0].type[1]) * math.sin(angle)
+            round[0].top_position = (x, y)
 
 
         # for stitch in previous round draw all dependents 
@@ -121,51 +134,80 @@ class Visualizer:
         for i in range(1, len(round)):
             # not checking for out of bounds because a round can't end with a chain
             if type(round[i].type) == tuple and round[i].type[0] == ComplexStitch.CH_SPACE:
-                if not type(round[i + 1].type) == tuple or (type(round[i + 1].type) == tuple and not round[i+1].type[0] == ComplexStitch.CH_SPACE):
+                if round[i].alias is not None:
+                    draw_starting_chain(self.drawing,round[i].type[1] ,round[i].previous.top_position)
+                    radius = math.hypot(round[i].previous.top_position[0], round[i].previous.top_position[1])
+                    angle = math.atan2(round[i].previous.top_position[1], round[i].previous.top_position[0])
+                    x = (radius + 10 * round[i].type[1]) * math.cos(angle)
+                    y = (radius + 10 * round[i].type[1]) * math.sin(angle)
+                    round[i].top_position = (x, y)
+
+                elif not type(round[i + 1].type) == tuple or (type(round[i + 1].type) == tuple and not round[i+1].type[0] == ComplexStitch.CH_SPACE):
+                    middle, right = self.split_chain_dependent(round[i])
+                    if len(middle) % 2 == 1:
+                        if len(round[i].dependent) % 2 == 0:
+                            required_positions = 2 * len(round[i].dependent) + 1
+                        else:
+                            required_positions = 2 * len(round[i].dependent)
+                    else:
+                        if len(round[i].dependent) % 2 == 0:
+                            required_positions = 2 * len(round[i].dependent)
+                        else:
+                            required_positions = 2 * len(round[i].dependent) + 1
+
                     if round[i + 1].type == SingularStitch.SLIP and not round[i + 1].anchors[0] == round[i]:
-                        draw_chain(self.drawing, round[i].previous.top_position, round[i + 1].anchors[0].top_position, 30 * round[i].type[1] + 10, round[i].type[1])
-                        self.drawing.append(draw.Ellipse(round[i+1].anchors[0].top_position[0], round[i + 1].anchors[0].top_position[0], 6, 3, fill='black', stroke='black'))
+                        # round[i].positions =  draw_chain(self.drawing, round[i].previous.top_position, round[i + 1].anchors[0].top_position, 30 * round[i].type[1] + 10, round[i].type[1], required_positions)
+                        # # self.drawing.append(draw.Ellipse(round[i+1].anchors[0].top_position[0], round[i + 1].anchors[0].top_position[0], 6, 3, fill='black', stroke='black'))
+                        # radius = math.hypot(round[i+1].anchors[0].top_position[0], round[i+1].anchors[0].top_position[1])
+                        # angle = math.degrees(math.atan2(round[i+1].anchors[0].top_position[1], round[i+1].anchors[0].top_position[0]))
+                        # x = radius * math.cos(math.radians(angle + 10))
+                        # y = radius * math.sin(math.radians(angle + 10))
+                        # self.drawing.append(draw.Ellipse(x, y, 6, 3, fill='black', stroke='black',transform=f'rotate({angle + 10},{x},{y})'))
+                        # round[i + 1].top_position = (x, y)
+                        self.draw_stitch(round[i + 1], round[i + 1].anchors[0].top_position, 90, round)
 
                     if round[i + 1].top_position is not None and round[i].previous.top_position is not None:
-                        draw_chain(self.drawing, round[i].previous.top_position, round[i + 1].top_position, 30 * round[i].type[1] + 10, round[i].type[1])
+                        round[i].positions =  draw_chain(self.drawing, round[i].previous.top_position, round[i + 1].top_position, 30 * round[i].type[1] + 10, round[i].type[1], required_positions)
         
 
         # draw all other stitches that have an anchor in the same round
+        for stitch in round:
+            if hasattr(stitch, "anchors"):
+                if stitch.top_position is None:
+                    if stitch.anchors[0].top_position is not None:
+                        angle = math.atan2(stitch.anchors[0].top_position[1], stitch.anchors[0].top_position[0])
+                        self.draw_stitch(stitch, stitch.anchors[0].top_position, angle, round)
+
         # draw weird edge cases
         
         # TODO handle special cases
         pass
-
-    # def split_round_into_sets(self, round):
-    #     anchored = []
-    #     simple_chains = []
-    #     special_cases = []
-        
-    #     for stitch in round:
-    #         if hasattr(stitch, 'chain_destination_number'):
-    #             special_cases.append(stitch)
-    #         elif type(stitch.type) == SingularStitch:
-    #             # if the destination is a chain space, it needs to be drawn differently
-    #             if type(stitch.anchors[0].type) is tuple and stitch.anchors[0].type[0] == ComplexStitch.CH_SPACE:
-    #                 special_cases.append(stitch)
-    #             else:
-    #                 anchored.append(stitch)
-    #         elif stitch.type[0] == ComplexStitch.CH_SPACE:
-    #             simple_chains.append(stitch)
-    #         else:
-    #             anchored.append(stitch)
-        
-    #     return (anchored, simple_chains, special_cases)
+    
     
 
     def draw_dependent(self, stitch : Stitch, round):
         if type(stitch.type) == tuple and stitch.type[0] == ComplexStitch.CH_SPACE:
-            if stitch == round[0]:
+            # if it counts as something other than a chain, then it is not processed as a chain
+            if not hasattr(stitch, "positions"):
                 pass
             else:
-                # TODO implement stitches into chains
-                # if previous stitch is a chain, put it into the center, otherwise align to right
-                return # earl return to cut down on indentation
+                middle, right = self.split_chain_dependent(stitch)
+
+                # draw the right stitches
+                for i in range(len(right)):
+                    self.draw_stitch(right[i], (stitch.positions[i][0], stitch.positions[i][1]), stitch.positions[i][2], round)
+
+                start_index = (len(stitch.positions) // 2 - len(middle) // 2)
+                end_index = (len(stitch.positions) // 2 + len(middle) // 2)
+                positions = stitch.positions[start_index: end_index + 1]
+
+
+                for i in range(len(middle)):
+                    if middle[i] in round:
+                        continue
+                    self.draw_stitch(middle[i], (positions[i][0], positions[i][1]), positions[i][2], round)
+
+                return # early return to cut down on indentation
         
         if len(stitch.dependent) == 1:
             if stitch.dependent[0] in round:
@@ -188,17 +230,6 @@ class Visualizer:
                     skipped += 1
 
     def draw_stitch(self, stitch, position, angle, round):
-        if stitch in round:
-            return
-
-
-        if stitch.type == SingularStitch.SLIP:
-            return
-        #     next_angle = angle_from_origin(stitch.anchors[0].top_position)
-        #     prev_angle = angle_from_origin(stitch.previous.top_position)
-        #     angle = (next_angle + prev_angle) / 2
-        #     self.drawing.append(draw.Ellipse(6, 3, position[0], position[1]))
-        #     return
 
         if type(stitch.type) == tuple and stitch.type[0] == ComplexStitch.CLUSTER:
             height = self.get_group_height(self.get_group(stitch.type[2]))
@@ -233,8 +264,25 @@ class Visualizer:
         y = position[1] + self.get_group_height(self.get_group(stitch.type)) * math.sin(math.radians(angle))
         stitch.top_position = (x, y)
 
-    def draw_chain(self, chain):
-        pass
+
+    def split_chain_dependent(self, chain : Stitch):
+        if type(chain.type) != tuple or chain.type[0] != ComplexStitch.CH_SPACE :
+            raise Exception("can't split something that isn't a chain")
+        
+        middle = []
+        right = []
+
+        for stitch in chain.dependent:
+            # if nothing has been assigned to middle yet then it's a decision
+            if len(middle) == 0:
+                if type(stitch.previous.type) == tuple and stitch.previous.type[0] == ComplexStitch.CH_SPACE:
+                    middle.append(stitch)
+                else:
+                    right.append(stitch)
+            else:
+                middle.append(stitch)
+
+        return (middle, right)
 
     def draw_basic_round(self, round, previous_round, radius):
         # we've already verified these are valid and alternating, because this function is only called right after making that validation
@@ -304,6 +352,8 @@ class Visualizer:
             return self.half_double_crochet
         elif stitch_type == SingularStitch.DC:
             return self.double_crochet
+        elif stitch_type == SingularStitch.SLIP:
+            return self.slip_stitch
         else:
             raise Exception("Unsupported stitch type")
     
@@ -314,3 +364,5 @@ class Visualizer:
             return 35
         elif group == self.double_crochet:
             return 45
+        elif group == self.slip_stitch:
+            return 10
