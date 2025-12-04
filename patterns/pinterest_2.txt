@@ -1,0 +1,8 @@
+round 1: ch 8, slip st in 8th ch from hook to make ring
+round 2: ch 3, 23 dc in ring, slip stitch to first ch
+round 3: ch 3 (counts as first dc), [ch 1, dc in next dc] 23 times, ch 1, slip st to first dc
+round 4: ch 3 (counts as first dc), [ch 2, dc in next dc] 23 times, ch 2, slip st to first dc
+round 5: ch 3 (counts as first dc), [ch 3, dc in next dc] 23 times, ch 3, slip st to first dc
+round 6: ch 3 (counts as first dc), [ch 4, dc in next dc] 23 times, ch 4, slip st to first dc
+round 7: 2 slip st in next st, ch 3 (counts as first dc), ch 2, dc in the same ch, [ch 2, dc in next ch, ch 2, dc in same ch] 23 times, ch 2, slip st to first dc
+round 8: skip 1 dc, slst in next ch, ch 3 (counts as first dc), 3 tr in the same ch, [ch 2, skip next ch, 4 tr in next ch] 23 times, ch 2, slip st to first dc

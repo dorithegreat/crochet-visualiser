@@ -44,7 +44,7 @@ def bezier_length(P0, P1, P2, P3, n_intervals=1000):
         s += coef * speed(i*h)
     return s * (h/3.0)
 
-def find_h_for_length(P0, P3, desired_length, h_min=0.0, h_max=1000.0, tol=1e-6, max_iter=60, simpson_intervals=1000):
+def find_h_for_length(P0, P3, desired_length, h_min=0.0, h_max=200.0, tol=1e-6, max_iter=60, simpson_intervals=1000):
     x0, y0 = P0
     x3, y3 = P3
     c = math.hypot(x3 - x0, y3 - y0)
@@ -113,7 +113,7 @@ def sample_bezier_by_arclength(P0, P1, P2, P3, n_samples=100, sample_grid=5000):
     return samples
 
 # ---------- Public function ----------
-def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30, dependent = 0):
+def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30, n_positions = 0, stroke='black'):
     """
     Places 'n_ellipses' along an arch between points P0 and P3 in the given drawsvg Drawing.
     
@@ -129,7 +129,7 @@ def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30, dependent =
     dx = x3 - x0
     dy = y3 - y0
     angle = math.atan2(dy, dx)
-    c = math.hypot(dx, dy)
+    radius = math.hypot(dx, dy)
     cosA = math.cos(angle)
     sinA = math.sin(angle)
     def to_world(lx, ly):
@@ -137,18 +137,18 @@ def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30, dependent =
         wy = lx*sinA + ly*cosA + y0
         return wx, wy
     P0_local = (0.0, 0.0)
-    P1_local = (0.25*c, h)
-    P2_local = (0.75*c, h)
-    P3_local = (c, 0.0)
+    P1_local = (0.25*radius, 0.7 * h)
+    P2_local = (0.75*radius, 0.7 * h)
+    P3_local = (radius, 0.0)
     # sample points along arc-length
     samples = sample_bezier_by_arclength(
         P0_local, P1_local, P2_local, P3_local,
-        n_samples=n_ellipses + 2   # <-- add two extra so trimmed list still has n_ellipses
+        n_samples=n_ellipses + 2 # 2 extra so that the ellipses don't overlap with ends
     )
     samples = samples[1:-1] 
     # ellipse shape
     shape = draw.Group()
-    shape.append(draw.Ellipse(0, 0, 12, 5, stroke='black', fill='none', stroke_width=1))
+    shape.append(draw.Ellipse(0, 0, 8, 4, stroke=stroke, fill='none', stroke_width=1))
     for t_local, (lx,ly), (dx_local,dy_local) in samples:
         wx, wy = to_world(lx, ly)
         dxw = dx_local * cosA - dy_local * sinA
@@ -158,7 +158,7 @@ def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30, dependent =
 
     samples = sample_bezier_by_arclength(
         P0_local, P1_local, P2_local, P3_local,
-        n_samples=  dependent + 2   # <-- add two extra so trimmed list still has n_ellipses
+        n_samples=  n_positions + 2
     )
     samples = samples[1:-1] 
 
@@ -246,7 +246,7 @@ def draw_base_chain(drawing, n, radius=40, a=10, b=4, target_angle_deg=-45):
 
     return (sx, sy)
 
-def draw_starting_chain(drawing, n, start, rx = 8, ry = 4, spacing = 19, 
+def draw_starting_chain(drawing, n, start, rx = 6, ry = 3, spacing = 15, 
             stroke='black', fill='none'):
     """
     Add n ellipses of radii (rx, ry) to an existing drawsvg.Drawing.
@@ -269,17 +269,21 @@ def draw_starting_chain(drawing, n, start, rx = 8, ry = 4, spacing = 19,
 
     centers = [
         (first_cx + i * spacing * ux, first_cy + i * spacing * uy)
-        for i in range(n)
+        for i in range(n + 1)
     ]
 
     # Draw ellipses
     for cx, cy in centers:
+        if (cx, cy) == centers[n]:
+            continue
         e = draw.Ellipse(
             cx, cy, rx, ry,
             fill=fill, stroke=stroke,
             transform=f'rotate({angle_deg},{cx},{cy})'
         )
         drawing.append(e)
+
+    return (cx, cy)
 
 
 def draw_cluster_lines(d, P0, P1, n_lines=3, n_strikes=1,

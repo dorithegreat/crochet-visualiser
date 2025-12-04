@@ -20,7 +20,13 @@ half_double_crochet = draw.Group()
 half_double_crochet.append(draw.Line(0,0,0,-30, stroke_width = 2, stroke='black'))
 half_double_crochet.append(draw.Line(-10, -30, 10, -30, stroke_width = 2, stroke='black'))
 
-# d.append(double_crochet)
+treble = draw.Group()
+treble.append(draw.Line(0, 0, 0, -60, stroke_width = 2, stroke='black'))
+treble.append(draw.Line(-10, -60, 10, -60, stroke_width = 2, stroke='black'))
+treble.append(draw.Line(-7, -30, 7, -25, stroke_width = 2, stroke='black'))
+treble.append(draw.Line(-7, -40, 7, -35, stroke_width = 2, stroke='black'))
+
+d.append(treble)
 # d.append(single_crochet)
 
 
@@ -56,9 +62,9 @@ draw_chain(d,(-100, 110), (100, 110), 250, 10)
 
 draw_base_chain(d, 10, 50, 12, 5)
 
-draw_starting_chain(d, n=5, start=(100, 120))
+# draw_starting_chain(d, n=5, start=(100, 120))
 
-draw_cluster_lines(d, (0, 0), (0, -50), 5, 1, 0.8)
+# draw_cluster_lines(d, (0, 0), (0, -50), 5, 1, 0.8)
 
 # d = draw.Drawing(200, 200)
 d.save_svg("test2.svg")
