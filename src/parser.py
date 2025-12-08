@@ -365,7 +365,9 @@ def p_simple_stitch_generic(p):
 
 def p_grouped_stitch_increase(p):
     'grouped_stitch : NUMBER simple_stitch INCREASE'
-    p[0] = nd.Increase(p[2], p[1])
+    inc = nd.StitchGroup(p[2])
+    inc.set_number(p[1])
+    p[0] = inc
 
 def p_grouped_stitch_decrease(p):
     'grouped_stitch : NUMBER simple_stitch DECREASE'
@@ -459,7 +461,7 @@ parser = yacc.yacc(debug=True,debuglog=log)
 
 if __name__ == "__main__":
     # f = open(sys.argv[1], "r")
-    f = open("/home/dorithegreat/Documents/programs/praca inżynierska/crochet-visualiser/patterns/pinterest_1.txt", "r")
+    f = open("/home/dorithegreat/Documents/programs/praca inżynierska/crochet-visualiser/patterns/example_4.txt", "r")
     text = f.read()
     text = text.lower()
 

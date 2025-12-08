@@ -3,3 +3,9 @@ Round 0: Ch 5, slip st in 5th ch from hook to make a ring.
 Round 1: ch 3 (counts as first dc), 15 dc in ring, slip st to //third ch of// first dc
 
 Round 2: ch 3 (counts as first dc), ch 1, [dc in next dc, ch 1] 15 times, slip st to first dc
+
+Round 3: slip st in next ch, ch 1 (counts as sc), sc in the same ch, [ch 2, sc in next ch] 15 times, ch 2, slip st to first sc
+
+Round 4: ch 1, sc in the same ch, skip 1 sc, [ch 3, sc in next ch] 16 times, dc in first sc
+
+Round 5: ch 3 (counts as hdc), 2 dc cluster in last dc, [ch 5, 3 dc cluster in next ch] 16 times, ch 2, dc in first 2 dc cluster

@@ -102,9 +102,11 @@ class Preprocessor:
             # the previous stitch is the last stitch of the previous round
             if self.flattened and not self.current_expressions:
                 new_stitch.previous = self.flattened[-1][-1]
+                new_stitch.previous.next = new_stitch
             # if this is not the first stitch of a round, the previous stitch is the last stitch of the current round
             elif self.current_expressions:
                 new_stitch.previous = self.current_expressions[-1]
+                new_stitch.previous.next = new_stitch
             # if it is the first stitch in the whole pattern, there is no previous stitch and the field is already correctly set to None
             
             #? a chain stitch has no anchor, so the setting the anchor is skipped
@@ -139,7 +141,8 @@ class Preprocessor:
             else:
                 # the previous stitch is just the last on a list of expressions so far
                 new_stitch.previous = self.current_expressions[-1]
-            
+            new_stitch.previous.next = new_stitch
+
             #* --- aliasing --- 
             if alias is not None:
                 self.alias(new_stitch, alias)
@@ -150,7 +153,7 @@ class Preprocessor:
             elif new_stitch.type[0] == ComplexStitch.DECREASE:
                 repeats = new_stitch.type[1]
             else:
-                repeats = new_stitch.type[1]
+                repeats = 1
             
             # TODO rewrite it so that the whole stitch group can be anchored in the same stitch
             anchors = []
@@ -198,6 +201,13 @@ class Preprocessor:
                         previous = previous.previous
                     
                     anchors.append(previous.anchors[-1])
+                
+                elif stitch_group.destination.type == nd.DestinationType.LAST:
+                    previous = new_stitch.previous
+                    while not previous.counts_as(stitch_group.destination.stitch.stitch):
+                        previous = previous.previous
+                    
+                    anchors.append(previous)
                 
                 elif stitch_group.destination.type == nd.DestinationType.RING:
                     # if this is specifically the second round

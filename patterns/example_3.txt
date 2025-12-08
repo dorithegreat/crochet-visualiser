@@ -1,0 +1,9 @@
+Round 0: ch 8, slip st in 8th ch from hook to make ring
+Round 1: ch 3 (counts as dc), 23 dc in ring, slip st to first ch
+Round 2: ch 3 (counts as dc), ch 2, [skip 1 dc, dc in next dc, ch2] 11 times, slip st to first ch
+Round 3: ch 3 (counts as dc), ch 4, [dc in next dc, ch 4] 11 times, slip st to first ch
+Round 4: slip st to next ch, ch 3 (counts as first dc), 3 dc in the same ch, ch 5, [4 dc in next ch, ch 5] 11 times, slip st to first dc
+Round 5: skip 1 ch, ch 3 (counts as first dc), 3 dc, ch 2, sc in next ch, ch 2, [4 dc, ch 2, sc in next ch, ch 2] 11 times, slip st to first ch
+Round 6: ch 3 (counts as first dc), 3 dc, ch 3, sc in next sc, ch 3, [skip next ch, 4 dc, ch 3, sc in next sc, ch 3] 11 times, slip st to first ch 
+Round 7: ch 3 (counts as first dc), dc in the same ch, ch 2, skip 2 dc, 2 dc in next dc, ch 4, sc in next sc, ch 4, [2 dc in next dc, ch 2, skip 2 dc, 2 dc in next dc, ch 4, sc in next sc, ch 4] 11 times, slip st to first ch
+Round 8: ch 3 (counts as first dc), dc in the same ch, dc in next dc, ch 2, dc in next dc, 2 dc in next dc, ch 11, [2 dc in next dc, dc in next dc, ch 2, dc in next dc, 2 dc in next dc, ch 11] 11 times, slip st in first ch

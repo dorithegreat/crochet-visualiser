@@ -2,12 +2,12 @@ import drawsvg as draw
 import math
 from draw_utilities import draw_chain, draw_base_chain, draw_starting_chain, draw_cluster_lines
 
-d = draw.Drawing(500, 500, origin='center')
+d = draw.Drawing(100,  80, origin='center')
 d.append(draw.Rectangle(-250, -250, 500, 500, fill='white'))
 
 single_crochet = draw.Group()
-single_crochet.append(draw.Line(-10, -20, 10, 0, stroke_width = 2, stroke = 'black'))
-single_crochet.append(draw.Line(-10, 0, 10, -20, stroke_width = 2, stroke = 'black'))
+single_crochet.append(draw.Line(0, 0, 0, -40, stroke_width = 2, stroke = 'black'))
+single_crochet.append(draw.Line(-20, -20, 20, -20, stroke_width = 2, stroke = 'black'))
 # single_crochet.append(draw.Circle(0, 0, 2, fill = 'black'))
 # single_crochet.append(draw.Circle(-10, -10, 2, fill = 'gray'))
 
@@ -26,45 +26,23 @@ treble.append(draw.Line(-10, -60, 10, -60, stroke_width = 2, stroke='black'))
 treble.append(draw.Line(-7, -30, 7, -25, stroke_width = 2, stroke='black'))
 treble.append(draw.Line(-7, -40, 7, -35, stroke_width = 2, stroke='black'))
 
-d.append(treble)
+treble = draw.Group()
+treble.append(draw.Line(0, 0, 0, -80, stroke_width = 2, stroke='black'))
+treble.append(draw.Line(-10, -80, 10, -80, stroke_width = 2, stroke='black'))
+treble.append(draw.Line(-7, -35, 7, -30, stroke_width = 2, stroke='black'))
+treble.append(draw.Line(-7, -45, 7, -40, stroke_width = 2, stroke='black'))
+treble.append(draw.Line(-7, -55, 7, -50, stroke_width = 2, stroke='black'))
+
+# d.append(treble)
 # d.append(single_crochet)
 
+# d.append(draw.Use(half_double_crochet, 0, 20, transform='rotate(20, 0, 20)'))
+# d.append(draw.Use(half_double_crochet, 0, 20, transform='rotate(-20, 0, 20)'))
+# d.append(draw.Ellipse(0, 0, 12, 5, stroke='black', stroke_width=2, fill='white'))
 
-for i in range (16):
-    x = 60 * math.cos(2 * math.pi * i / 16)
-    y = 60 * math.sin((2 * math.pi * i / 16))
-    d.append(draw.Use(half_double_crochet, 0, 0, transform= f'translate({x}, {y}) rotate({(360 / 16) * i + 90}, 0, 0)'))
-
-for i in range (16):
-    x = 95 * math.cos(2 * math.pi * i / 16)
-    y = 95 * math.sin((2 * math.pi * i / 16))
-    d.append(draw.Use(double_crochet, 0, 0, transform= f'translate({x}, {y}) rotate({(360 / 16) * i + 90}, 0, 0)'))
-
-# last = (0,0)
-# for i in range (8):
-
-#     x = 130 * math.cos(2 * math.pi * i / 8)
-#     top_x = 175 * math.cos(2 * math.pi * i / 8)
-#     y = 130 * math.sin((2 * math.pi * i / 8))
-#     top_y = 175 * math.sin((2 * math.pi * i / 8))
-#     d.append(draw.Use(double_crochet, 0, 0, transform= f'translate({x}, {y}) rotate({(360 / 8) * i + 90}, 0, 0)'))
-
-
-#     if last != (0,0):
-#         draw_chain(d, last, (top_y, top_x), 150, 5)
-#     last = (top_y, top_x)
-
-
-
-
-draw_chain(d,(-100, 110), (100, 110), 250, 10)
-# draw_chain(d, (0,0), (0,0), 100, 7)
-
-draw_base_chain(d, 10, 50, 12, 5)
-
-# draw_starting_chain(d, n=5, start=(100, 120))
-
-# draw_cluster_lines(d, (0, 0), (0, -50), 5, 1, 0.8)
+draw_cluster_lines(d, (0, 20), (0, -20), 3, 1, 0.4)
+d.append(draw.Line(-10, -20, 10, -20, stroke_width = 2, stroke='black'))
 
 # d = draw.Drawing(200, 200)
-d.save_svg("test2.svg")
+# d.save_svg("test2.svg")
+d.save_png("cl.png")

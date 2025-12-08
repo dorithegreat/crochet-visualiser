@@ -9,7 +9,8 @@ def angle_from_origin(point):
     Returns the angle (in degrees) between the positive x-axis
     and the vector from (0,0) to (x,y).
     """
-    x, y = point
+    x = point[0]
+    y = point[1]
     if x == 0 and y == 0:
         raise ValueError("Angle is undefined for point (0,0).")
     return math.degrees(math.atan2(y, x))
@@ -17,96 +18,158 @@ def angle_from_origin(point):
 # ---------- Internal utility functions ----------
 def bezier_point(P0, P1, P2, P3, t):
     u = 1 - t
-    b0 = u**3
-    b1 = 3*u**2*t
-    b2 = 3*u*t**2
-    b3 = t**3
-    x = b0*P0[0] + b1*P1[0] + b2*P2[0] + b3*P3[0]
-    y = b0*P0[1] + b1*P1[1] + b2*P2[1] + b3*P3[1]
+    b0 = u ** 3
+    b1 = 3 * u ** 2 * t
+    b2 = 3 * u * t ** 2
+    b3 = t ** 3
+    x = b0 * P0[0] + b1 * P1[0] + b2 * P2[0] + b3 * P3[0]
+    y = b0 * P0[1] + b1 * P1[1] + b2 * P2[1] + b3 * P3[1]
     return x, y
 
 def bezier_derivative(P0, P1, P2, P3, t):
     u = 1 - t
-    dx = 3*((P1[0]-P0[0])*u*u + 2*(P2[0]-P1[0])*u*t + (P3[0]-P2[0])*t*t)
-    dy = 3*((P1[1]-P0[1])*u*u + 2*(P2[1]-P1[1])*u*t + (P3[1]-P2[1])*t*t)
+    dx = 3 * ((P1[0]-P0[0]) * u * u + 2 * (P2[0] - P1[0]) * u * t + (P3[0] - P2[0]) * t * t)
+    dy = 3 * ((P1[1] - P0[1]) * u * u + 2 * (P2[1] - P1[1]) * u * t + (P3[1] - P2[1]) * t * t)
     return dx, dy
 
-def bezier_length(P0, P1, P2, P3, n_intervals=1000):
-    if n_intervals % 2 == 1: n_intervals += 1
-    h = 1.0 / n_intervals
-    s = 0.0
-    def speed(t):
-        dx, dy = bezier_derivative(P0, P1, P2, P3, t)
-        return math.hypot(dx, dy)
-    s += speed(0) + speed(1)
-    for i in range(1, n_intervals):
-        coef = 4 if i % 2 == 1 else 2
-        s += coef * speed(i*h)
-    return s * (h/3.0)
+# ------------------------------------------------------------
+# Cubic Bézier derivative-based arc-length using Gauss-Legendre
+# ------------------------------------------------------------
 
-def find_h_for_length(P0, P3, desired_length, h_min=0.0, h_max=200.0, tol=1e-6, max_iter=60, simpson_intervals=1000):
-    x0, y0 = P0
-    x3, y3 = P3
+def bezier_length_gauss(P0, P1, P2, P3, order=10):
+    """
+    Compute arc length of a cubic Bezier curve using Gauss-Legendre quadrature.
+    order = 10 is usually enough (relative error ~1e-10).
+    order = 20 gives extremely high accuracy.
+    """
+
+    # Gauss–Legendre nodes & weights (order 10)
+    nodes = [
+        -0.9739065285, -0.8650633666, -0.6794095682, -0.4333953941, -0.1488743389,
+        0.1488743389,  0.4333953941,  0.6794095682,  0.8650633666,  0.9739065285
+    ]
+    weights = [
+        0.0666713443, 0.1494513491, 0.2190863625, 0.2692667193, 0.2955242247,
+        0.2955242247, 0.2692667193, 0.2190863625, 0.1494513491, 0.0666713443
+    ]
+
+    # Control point differences for derivative
+    ax = 3 * (P1[0] - P0[0])
+    ay = 3 * (P1[1] - P0[1])
+    bx = 3 * (P2[0] - P1[0])
+    by = 3 * (P2[1] - P1[1])
+    cx = 3 * (P3[0] - P2[0])
+    cy = 3 * (P3[1] - P2[1])
+
+    length = 0.0
+
+    # Integrate from t=0..1.
+    for xi, wi in zip(nodes, weights):
+        # Convert node from [-1,1] → [0,1]
+        t = 0.5 * (xi + 1.0)
+
+        # Cubic Bezier derivative B'(t)
+        dx = ax * ((1 - t) * (1 - t)) + bx * (2 * (1 - t) * t) + cx * (t * t)
+        dy = ay * ((1 - t) * (1 - t)) + by * (2 * (1 - t) * t) + cy * (t * t)
+
+        length += wi * math.hypot(dx, dy)
+
+    return 0.5 * length  # scale for interval transform
+
+
+# ------------------------------------------------------------
+# Find h such that the Bezier arc length matches desired_length
+# ------------------------------------------------------------
+
+def find_h_for_length(P0, P3, desired_length,
+                        h_min=0.0, h_max=500.0,
+                        tol=1e-6, max_iter=60):
+    """
+    Improved version using Gauss-Legendre Bézier integration.
+    """
+
+    x0 = P0[0]
+    y0 = P0[1]
+    x3 = P3[0]
+    y3 = P3[1]
+    # x0, y0 = P0
+    # x3, y3 = P3
     c = math.hypot(x3 - x0, y3 - y0)
+
     if desired_length < c - 1e-12:
-        raise ValueError("Desired length smaller than chord distance between endpoints.")
+        raise ValueError("Desired length is shorter than the endpoint chord.")
+
+    # Pre-rotation values
+    dx = x3 - x0
+    dy = y3 - y0
+    angle = math.atan2(dy, dx)
+    cosA = math.cos(-angle)
+    sinA = math.sin(-angle)
+
+    def to_local(px, py):
+        tx = px - x0
+        ty = py - y0
+        return tx*cosA - ty*sinA, tx*sinA + ty*cosA
+
+    # Local coordinates: P0 at (0,0), P3 at (c,0)
+    P0_local = (0.0, 0.0)
+    P3_local = (c, 0.0)
+
     def length_for_h(h):
-        dx = x3 - x0
-        dy = y3 - y0
-        angle = math.atan2(dy, dx)
-        cosA = math.cos(-angle)
-        sinA = math.sin(-angle)
-        def to_local(px, py):
-            tx = px - x0
-            ty = py - y0
-            return tx*cosA - ty*sinA, tx*sinA + ty*cosA
-        P0_local = (0.0, 0.0)
-        P3_local = (c, 0.0)
-        P1_local = (0.25*c, h)
-        P2_local = (0.75*c, h)
-        return bezier_length(P0_local, P1_local, P2_local, P3_local, n_intervals=simpson_intervals)
+        P1_local = (0.25 * c, h)
+        P2_local = (0.75 * c, h)
+        return bezier_length_gauss(P0_local, P1_local, P2_local, P3_local)
+
+    # Binary search for h
     lo = h_min
     hi = h_max
     for _ in range(max_iter):
-        mid = 0.5*(lo+hi)
+        mid = 0.5 * (lo + hi)
         Lmid = length_for_h(mid)
+
         if abs(Lmid - desired_length) <= tol:
             return mid
+
         if Lmid < desired_length:
             lo = mid
         else:
             hi = mid
-    return 0.5*(lo+hi)
+
+    return 0.5 * (lo + hi)
+
+
 
 def sample_bezier_by_arclength(P0, P1, P2, P3, n_samples=100, sample_grid=5000):
     M = sample_grid
     ts = [i / M for i in range(M + 1)]
-    pts = [bezier_point(P0, P1, P2, P3, t) for t in ts]
-    ders = [bezier_derivative(P0, P1, P2, P3, t) for t in ts]
-    speeds = [math.hypot(dx, dy) for dx, dy in ders]
-    cum = [0.0]
-    for i in range(1, M+1):
-        seg = 0.5*(speeds[i-1]+speeds[i])*(1.0/M)
-        cum.append(cum[-1]+seg)
-    total = cum[-1]
+    points = [bezier_point(P0, P1, P2, P3, t) for t in ts]
+    derivatives = [bezier_derivative(P0, P1, P2, P3, t) for t in ts]
+    speeds = [math.hypot(dx, dy) for dx, dy in derivatives]
+    cumulative = [0.0]
+    for i in range(1, M + 1):
+        seg = 0.5 * (speeds[i - 1] + speeds[i]) * (1.0 / M)
+        cumulative.append(cumulative[-1] + seg)
+    total = cumulative[-1]
+
     samples = []
     for k in range(n_samples):
-        s_target = (k/(n_samples-1))*total if n_samples>1 else 0.0
+        s_target = (k / (n_samples - 1)) * total
         lo_idx = 0
         hi_idx = M
-        while lo_idx<hi_idx:
-            mid = (lo_idx+hi_idx)//2
-            if cum[mid]<s_target:
-                lo_idx=mid+1
+        while lo_idx < hi_idx:
+            mid = (lo_idx + hi_idx) // 2
+            if cumulative[mid] < s_target:
+                lo_idx = mid + 1
             else:
-                hi_idx=mid
+                hi_idx = mid
+
         idx = max(1, lo_idx)
-        s0, s1 = cum[idx-1], cum[idx]
+        s0, s1 = cumulative[idx-1], cumulative[idx]
         t0, t1 = ts[idx-1], ts[idx]
         if s1 - s0 == 0:
             t_est = t0
         else:
-            t_est = t0 + (s_target - s0)*(t1 - t0)/(s1 - s0)
+            t_est = t0 + (s_target - s0) * (t1 - t0) / (s1 - s0)
         x, y = bezier_point(P0, P1, P2, P3, t_est)
         dx, dy = bezier_derivative(P0, P1, P2, P3, t_est)
         samples.append((t_est, (x,y), (dx,dy)))
@@ -124,22 +187,29 @@ def draw_chain(drawing, P0, P3, desired_length=100.0, n_ellipses=30, n_positions
     - n_ellipses: number of ellipses along the curve
     """
     h = find_h_for_length(P0, P3, desired_length)
-    x0, y0 = P0
-    x3, y3 = P3
+
+    x0 = P0[0]
+    y0 = P0[1]
+    x3 = P3[0]
+    y3 = P3[1]
     dx = x3 - x0
     dy = y3 - y0
+
     angle = math.atan2(dy, dx)
     radius = math.hypot(dx, dy)
     cosA = math.cos(angle)
     sinA = math.sin(angle)
+
     def to_world(lx, ly):
-        wx = lx*cosA - ly*sinA + x0
-        wy = lx*sinA + ly*cosA + y0
+        wx = lx * cosA - ly * sinA + x0
+        wy = lx * sinA + ly * cosA + y0
         return wx, wy
+    
     P0_local = (0.0, 0.0)
-    P1_local = (0.25*radius, 0.7 * h)
-    P2_local = (0.75*radius, 0.7 * h)
+    P1_local = (0.25*radius, h)
+    P2_local = (0.75*radius, h)
     P3_local = (radius, 0.0)
+
     # sample points along arc-length
     samples = sample_bezier_by_arclength(
         P0_local, P1_local, P2_local, P3_local,
@@ -253,7 +323,11 @@ def draw_starting_chain(drawing, n, start, rx = 6, ry = 3, spacing = 15,
     Ellipses are placed in a line starting at start=(x,y) and oriented
     directly away from (0,0). `spacing` = distance between ellipse centers.
     """
-    x, y = start
+    angle_deg = -1
+    if len(start) == 3:
+        x, y, angle_deg = start
+    else:
+        x, y = start
 
     # Unit direction vector away from the origin
     L = math.hypot(x, y)
@@ -261,8 +335,8 @@ def draw_starting_chain(drawing, n, start, rx = 6, ry = 3, spacing = 15,
         raise ValueError("start must not be (0,0)")
     ux, uy = x / L, y / L
 
-    # Angle comes from the helper function
-    angle_deg = angle_from_origin((x, y))
+    if angle_deg == -1:
+        angle_deg = angle_from_origin((x, y))
 
     first_cx = x + (0.5 * spacing + 5) * ux
     first_cy = y + (0.5 * spacing + 5) * uy
@@ -328,13 +402,12 @@ def draw_cluster_lines(d, P0, P1, n_lines=3, n_strikes=1,
         p.Q(cx, cy, x1, y1)
         d.append(p)
 
-        # -------- FIX: strikes must follow each curved line, not the center line --------
         def bezier_point(t):
             # Quadratic Bézier interpolation
             x = (1-t)**2 * x0 + 2*(1-t)*t * cx + t**2 * x1
             y = (1-t)**2 * y0 + 2*(1-t)*t * cy + t**2 * y1
             return x, y
-        # -------------------------------------------------------------------------------
+        
 
         spacing = 1/(n_strikes+1)
         for k in range(n_strikes):
