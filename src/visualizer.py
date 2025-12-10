@@ -60,7 +60,7 @@ class Visualizer:
         
         print("test")
         self.drawing.save_svg("output.svg")
-        # self.drawing.save_png("hyperbolic.png")
+        # self.drawing.save_png("example_4.png")
 
     def toggle_color(self):
         if self.color == 'black':
@@ -346,6 +346,54 @@ class Visualizer:
             
             draw_cluster_lines(self.drawing, position, (x, y), stitch.type[1], strikes, 0.15 * stitch.type[1], stroke=self.color)
             stitch.top_position = (x, y)
+            return
+
+        elif type(stitch.type) == tuple and stitch.type[0] == ComplexStitch.DECREASE:
+            if stitch.type[1] % 2 == 1:
+                base_point = stitch.anchors[stitch.type[1] // 2].top_position
+            else:
+                x1 = stitch.anchors[stitch.type[1] // 2].top_position[0]
+                y1 = stitch.anchors[stitch.type[1] // 2].top_position[1]
+                x2 = stitch.anchors[stitch.type[1] // 2 - 1].top_position[0]
+                y2 = stitch.anchors[stitch.type[1] // 2 - 1].top_position[1]
+                base_point = ((x1 + x2) / 2, (y1 + y2) / 2)
+            
+            # base point coords
+            xb, yb = base_point
+            radius = math.hypot(xb, yb)
+            angle = math.atan2(yb, xb)
+            
+            # visual coords
+            x = (radius + self.get_group_height(self.get_group(stitch.type[2])) - 10) * math.cos(angle)
+            y = (radius + self.get_group_height(self.get_group(stitch.type[2])) -10) * math.sin(angle)
+
+            # top coords
+            xt = (radius + self.get_group_height(self.get_group(stitch.type[2]))) * math.cos(angle)
+            yt = (radius + self.get_group_height(self.get_group(stitch.type[2]))) * math.sin(angle)
+            stitch.top_position = (xt, yt)
+
+
+            top_line = draw.Group()
+            top_line.append(draw.Line(-15, 0, 15, 0, stroke_width = 2))
+            self.drawing.append(draw.Use(top_line, 0, 0, transform = f'translate({x}, {y}) rotate({math.degrees(angle) + 90}, 0, 0)', stroke = self.color))
+
+            cross_line = draw.Group()
+            if stitch.type[2] == SingularStitch.DC:
+                cross_line.append(draw.Line(-7, 0, 7, 0, stroke_width=2))
+            elif stitch.type[2] == SingularStitch.TR:
+                cross_line.append(draw.Line(-7, 5, 7, 5, stroke_width=2))
+                cross_line.append(draw.Line(-7, -5, 7, -5, stroke_width=2))
+
+            # self.drawing.append(draw.Line(xb, yb, x, y, stroke=self.color, stroke_width=2))
+            for anchor in stitch.anchors:
+                xa = anchor.top_position[0]
+                ya = anchor.top_position[1]
+                self.drawing.append(draw.Line(xa, ya, x, y, stroke=self.color, stroke_width=2))
+
+                xm = (x + xa) / 2
+                ym = (y + ya) / 2
+                self.drawing.append(draw.Use(cross_line, 0, 0, transform = f'translate({xm}, {ym}) rotate({math.degrees(angle) + 110}, 0, 0)', stroke = self.color))
+            
             return
 
         self.drawing.append(draw.Use(self.get_group(stitch.type), 0, 0, transform = f'translate({position[0]}, {position[1]}) rotate({angle + 90}, 0, 0)', stroke = self.color))

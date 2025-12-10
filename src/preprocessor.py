@@ -117,7 +117,13 @@ class Preprocessor:
             self.current_expressions.append(new_stitch)
             return
 
-        
+        # an increase is really just a number of stitches
+        if type(stitch_group.stitch) == nd.Increase:
+            temp = nd.StitchGroup(stitch_group.stitch.stitch)
+            temp.set_destination(stitch_group.destination)
+            temp.set_number(stitch_group.stitch.number)
+            stitch_group = temp
+
         # All stitch group variants other than chain mean multiple copies of identical stitch
         for i in range(stitch_group.number):
             #* --- Creating a new stitch object ---
@@ -128,7 +134,7 @@ class Preprocessor:
             elif type(stitch_group.stitch) == nd.Increase:
                 new_stitch = Stitch((ComplexStitch.INCREASE, stitch_group.number, translate_enum(stitch_group.stitch.stitch)))
             elif type(stitch_group.stitch) == nd.Decrease:
-                new_stitch = Stitch((ComplexStitch.DECREASE, stitch_group.number, translate_enum(stitch_group.stitch.stitch)))
+                new_stitch = Stitch((ComplexStitch.DECREASE, stitch_group.stitch.number, translate_enum(stitch_group.stitch.stitch)))
             elif type(stitch_group.stitch) == nd.Cluster:
                 new_stitch = Stitch((ComplexStitch.CLUSTER, stitch_group.stitch.number, translate_enum(stitch_group.stitch.stitch)))
                 
@@ -182,6 +188,8 @@ class Preprocessor:
                         self.previous_round_index += 1
                         
                     anchors.append(self.flattened[-1][self.previous_round_index])
+                    if repeats > 1 and i < repeats - 1:
+                        self.previous_round_index += 1
                 
                 elif stitch_group.destination.type == nd.DestinationType.FIRST:
                     index = 0

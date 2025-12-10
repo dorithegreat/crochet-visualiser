@@ -254,7 +254,10 @@ def p_aliasable_expression_base_expression(p):
 
 def p_expression_stitch(p):
     'expression : stitch_type'
-    p[0] = nd.StitchGroup(p[1])
+    # p[0] = nd.StitchGroup(p[1])
+    stitch = p[1]
+    stitch.set_number(1)
+    p[0] = stitch
 
 #? Chains are the only stitch commonly written as "ch n" rather than "n chs"
 def p_expression_chain_number(p):
@@ -365,9 +368,7 @@ def p_simple_stitch_generic(p):
 
 def p_grouped_stitch_increase(p):
     'grouped_stitch : NUMBER simple_stitch INCREASE'
-    inc = nd.StitchGroup(p[2])
-    inc.set_number(p[1])
-    p[0] = inc
+    p[0] = nd.Increase(p[2], p[1])
 
 def p_grouped_stitch_decrease(p):
     'grouped_stitch : NUMBER simple_stitch DECREASE'

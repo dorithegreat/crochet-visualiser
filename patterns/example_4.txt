@@ -1,3 +1,4 @@
 Round 0: ch 5, slip st in 5th ch from hook to make ring
-Round 1: ch 1, 15 sc in ring, slip st to first ch
-Round 2: ch 1, [2 dc increase in next sc, ch 1, 2 dc decrease in next st, ch 2] 8 times
+Round 1: ch 1, 11 sc in ring, slip st to first ch
+Round 2: ch 1, [3 dc increase in next sc, ch 2, 2 dc decrease in next st, ch 2] 4 times, slip st to first dc
+Round 3: ch 1, [3 dc decrease, ch 3, 2 dc increase in next 2 dc decrease, ch 3, skip 1 ch] 4 times, slip st to first 3 dc decrease
