@@ -1,5 +1,6 @@
 import ply.yacc as yacc
 import ply.lex as lex
+import sys
 
 from preprocessor import Preprocessor
 from visualizer import Visualizer
@@ -461,8 +462,8 @@ lex.lex(debug=True,debuglog=log)
 parser = yacc.yacc(debug=True,debuglog=log)
 
 if __name__ == "__main__":
-    # f = open(sys.argv[1], "r")
-    f = open("/home/dorithegreat/Documents/programs/praca inżynierska/crochet-visualiser/patterns/example_4.txt", "r")
+    f = open(sys.argv[1], "r")
+    # f = open("/home/dorithegreat/Documents/programs/praca inżynierska/crochet-visualiser/patterns/example_4.txt", "r")
     text = f.read()
     text = text.lower()
 
